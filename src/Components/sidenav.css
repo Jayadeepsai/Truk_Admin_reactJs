@@ -1,0 +1,43 @@
+.sidenav{
+    background-color: #F58E26;
+    width: 300px;
+    height: 100vh;
+    padding: 20px 20px 20px 20px;
+    font-size: 23px;
+    color: #fff;
+  }
+  
+  .NavItem.active {
+    background-color: #fff;
+    color: black;
+  }
+  
+  /* .Nav.Link{
+    color: #fff;
+  } */
+  /* .topnav{
+    background-color: #F58E26;
+    height: 80px;
+    margin-left: 63px;
+    display: flex;
+    width: 100%;
+  } */
+  
+  .page{
+    text-align: center;
+    font-size: 5rem;
+    margin-left: 50px;
+    
+  }
+  
+  .topnav{
+    background-color: #F58E26;
+    height: 90px;
+    width: 100%;
+    /* margin-left: 63px; */
+  }
+
+
+  .earnings{
+    text-align: center;
+  }

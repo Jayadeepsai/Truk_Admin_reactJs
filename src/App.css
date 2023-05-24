@@ -36,3 +36,181 @@
     transform: rotate(360deg);
   }
 }
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* .navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #34495e;
+  color: white;
+  width: 100%;
+}
+.logo{
+  font-size: 24px;
+  margin: 14px;
+  color: white;
+} */
+
+/* Add the following CSS code to your existing styles */
+
+/* .menu {
+  display: inline-block;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+}
+
+.navbar-nav {
+  display: inline-flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  transition: color 0.3s;
+} */
+
+/* .nav-link:hover {
+  color: #00f;
+} */
+
+/* Media Queries */
+/* @media (max-width: 600px) {
+  .menu {
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+} */
+
+
+
+/* .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.navbar img {
+  width: 200px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu .nav-link {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.menu .nav-link:hover {
+  color: #f00;
+} */
+
+.trukapp{
+  display: flex;
+}
+
+.container img{
+  padding-top: 30px;
+  padding-bottom: 50px;
+  width: 300px;
+  /* height: 110px; */
+}
+
+.login h3{
+  margin-bottom: 50px;
+}
+
+.login .field{
+  margin-bottom: 50px;
+}
+
+.login .field input{
+  border-radius: 5px;
+}
+
+.login .select{
+  margin-bottom: 50px;
+}
+
+.login .select .radi {
+  padding-right: 2px;
+  margin-left: 50px;
+}
+
+.login .select .radi a{
+  color: black;
+}
+
+.button{
+  border-radius: 5px;
+  background-color: #F58E26;
+  padding: 5px;
+  width: 500px;
+  font-size: 30px;
+}
+
+.sidenav{
+  background-color: #F58E26;
+  width: 300px;
+  height: 100vh;
+  padding: 20px 20px 20px 20px;
+  font-size: 23px;
+  color: #fff;
+}
+
+.NavItem.active {
+  background-color: #fff;
+  color: black;
+}
+
+/* .Nav.Link{
+  color: #fff;
+} */
+.topnav{
+  background-color: #F58E26;
+  /* height: 80px; */
+  /* margin-left: 63px; */
+  display: flex;
+}
+
+.page{
+  text-align: center;
+  font-size: 5rem;
+  margin-left: 50px;
+  
+}
+
+.topnav{
+  background-color: #F58E26;
+  height: 90px;
+  /* margin-left: 63px; */
+}
