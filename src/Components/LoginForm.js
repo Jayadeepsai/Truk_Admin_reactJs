@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -6,6 +6,8 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { InputGroup } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import axios from "axios";
+
+
 
 const LoginForm = (props) => {
     const [email, setEmail] = useState("");
@@ -52,7 +54,7 @@ const LoginForm = (props) => {
         <>
             <div className="trukapp">
                 <div className="img">
-                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" width="700px" height="680px" />
+                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" width="750px" height="750px" />
                 </div>
 
                 <div className="container">
@@ -66,12 +68,23 @@ const LoginForm = (props) => {
                                 <div className="field">
                                     <div>
                                         {/* <label >Email    :  </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
-                                        <input
+                                        {/* <input
                                             type="email"
                                             placeholder="Email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
-                                        />
+                                        /> */}
+                                        <InputGroup className="mb-3"  style={{ width: '30rem', margin: 'auto' }}>
+                                            <InputGroup.Text id="basic-addon1" style={{width:"6rem",backgroundColor: '#F58E26'}}>Email</InputGroup.Text>
+                                            <Form.Control
+                                                type="email"
+                                                placeholder="Email"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon1"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                            />
+                                        </InputGroup>
                                     </div><br />
                                     <div style={{ display: 'flex' }}>
 
@@ -87,7 +100,7 @@ const LoginForm = (props) => {
                                         </span>
                                         </InputGroup> */}
                                         <InputGroup className="mb-3" style={{ width: '30rem', margin: 'auto' }}>
-                                            {/* <label>Password  :  </label>&nbsp; */}
+                                        <InputGroup.Text id="basic-addon1" style={{width:"6rem",backgroundColor: '#F58E26'}}>Password</InputGroup.Text>
                                             <Form.Control
 
                                                 type={showPassword ? 'text' : 'password'}
@@ -99,19 +112,20 @@ const LoginForm = (props) => {
                                                 {showPassword ? <FaEye /> : <FaEyeSlash />}</InputGroup.Text>
                                         </InputGroup>
                                     </div>
+                                    <div>
+                                        <a href="" style={{fontSize:"1rem"}}>Forget password?</a>
+                                    </div>
                                 </div>
-                                <div className="select" style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                    <div className="radi">
+                                
+                                    {/* <div className="radi">
                                         <input type="radio" />&nbsp;
                                         <a href="">Remember me</a>
-                                    </div>
-                                    <div>
-                                        <a href="">Forget password?</a>
-                                    </div>
+                                    </div> */}
+                                    
 
-                                </div>
+                          
                                 <div >
-                                    <Button className="button" style={{ backgroundColor: '#F58E26', marginLeft: '70px' }} onClick={(e) => handleSubmit(e)}>Login now</Button>
+                                    <Button className="button" style={{ backgroundColor: '#F58E26', marginLeft: '20px' }} onClick={(e) => handleSubmit(e)}>Login now</Button>
                                 </div>
 
                             </form>
