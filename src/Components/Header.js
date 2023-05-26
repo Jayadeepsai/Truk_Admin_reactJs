@@ -7,10 +7,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import InputGroup from 'react-bootstrap/InputGroup';
 import * as ImIcons from "react-icons/im"
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
 export default function Header() {
+
+  const navigate = useNavigate()
+  const handleLogout = () =>{
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('adminEmail')
+    navigate('/login');
+  }
   
   return (
     <>
@@ -57,7 +65,9 @@ export default function Header() {
                 <Nav.Link href="/users" style={{ color: "#ffff" }}>Users</Nav.Link>
                 {/* <Nav.Link href="/date" style={{ color: "#ffff" }}>Date</Nav.Link> */}
                 <Nav.Link href="/vehicles" style={{ color: "#ffff" }}>Vehicles</Nav.Link>
-                
+                <Button onClick={handleLogout} style={{ backgroundColor:"#f58e26" }}>
+                  Logout
+                </Button>
               </Nav>
             </Nav>
           </Navbar.Collapse>

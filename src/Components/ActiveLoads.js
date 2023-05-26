@@ -54,6 +54,7 @@ export default function ActiveLoads() {
 
     useEffect(() => {
         getActiveLoads();
+        
     }, [])
 
     const getActiveLoads = async () => {

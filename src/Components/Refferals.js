@@ -57,7 +57,7 @@ export default function Refferals(){
     }, [])
 
     const getUsers = async () => {
-        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
+        const users = await axios.get("http://localhost:3001/admin/allUsers")
         try {
             if (users.data.TotalUsers !== 0) {
                 setUsers(users.data.users)
@@ -149,7 +149,7 @@ export default function Refferals(){
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>S.no</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Reefaral Users</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Users</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Earnings</b></StyledTableCell>
                                       
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
@@ -228,7 +228,7 @@ export default function Refferals(){
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>S.no</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Reefaral Users</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Users</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Earnings</b></StyledTableCell>
                                       
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>

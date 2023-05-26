@@ -54,7 +54,7 @@ export default function Users() {
     }, [])
 
     const getUsers = async () => {
-        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
+        const users = await axios.get("http://localhost:3001/admin/allUsers")
         try {
             if (users.data.TotalUsers !== 0) {
                 setUsers(users.data.users)
