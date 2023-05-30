@@ -112,9 +112,9 @@ const LoginForm = (props) => {
                                                 {showPassword ? <FaEye /> : <FaEyeSlash />}</InputGroup.Text>
                                         </InputGroup>
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <a href="" style={{fontSize:"1rem"}}>Forget password?</a>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 
                                     {/* <div className="radi">

@@ -92,7 +92,7 @@ export default function CompletedLoads() {
         }
     }
 
-  
+
     // Enter key search
 
     function handleKeyDown(event) {
@@ -127,7 +127,8 @@ export default function CompletedLoads() {
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Load Status</b></StyledTableCell>
@@ -135,10 +136,13 @@ export default function CompletedLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {searchedResult.map((load) => {
-
+                                {searchedResult.map((load, idx) => {
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={load.name}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {load.LoadId}
                                             </StyledTableCell>
@@ -148,9 +152,9 @@ export default function CompletedLoads() {
                                                 {load.isActive}
                                             </StyledTableCell>
                                             <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setCompleteLoad(load) }}>View</b></Button>
-                                            <CompleteLoadsPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
+                                                <CompleteLoadsPopUp
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
                                         </StyledTableRow>
                                     )
@@ -192,12 +196,13 @@ export default function CompletedLoads() {
                     </Row> */}
                 </div>) : (<div className='container'>
                     <h2 style={{ textAlign: "center" }}>Completed Loads</h2>
-                  <br />
+                    <br />
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Load Status</b></StyledTableCell>
@@ -205,10 +210,13 @@ export default function CompletedLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {activeLoads.map((load) => {
-
+                                {activeLoads.map((load, idx) => {
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={load.name}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {load.LoadId}
                                             </StyledTableCell>
@@ -218,9 +226,9 @@ export default function CompletedLoads() {
                                                 {load.isActive}
                                             </StyledTableCell>
                                             <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setCompleteLoad(load) }}>View</b></Button>
-                                            <CompleteLoadsPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
+                                                <CompleteLoadsPopUp
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
                                         </StyledTableRow>
                                     )

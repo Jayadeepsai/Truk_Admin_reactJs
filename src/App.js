@@ -13,6 +13,7 @@ import Dates from "./Components/Dates";
 import PrivateRoutes from "./Components/PrivateRoutes";
 import LoginForm from "./Components/LoginForm";
 import HideTopNav from "./Components/HideTopNav/HideTopNav";
+import Queries from "./Components/Queries";
 
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/users" element={<PrivateRoutes Component={Users} />} />
         <Route path="/refferals" element={<PrivateRoutes Component={Refferals} />} />
         <Route path="/vehicles" element={<PrivateRoutes Component={Vehicle} />} />
+        <Route path="/queries" element={<PrivateRoutes Component={Queries} />} />
         {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
         {/* <Route path="/date" element={<Dates />} /> */}
         {/* </Route> */}

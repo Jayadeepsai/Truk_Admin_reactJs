@@ -149,6 +149,7 @@ export default function ActiveLoads() {
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
+                                <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                 <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
@@ -157,10 +158,14 @@ export default function ActiveLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {searchedResult.map((load) => {
+                                {searchedResult.map((load,idx) => {
                                     const status = Status(load)
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={load.name}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {load.LoadId}
                                             </StyledTableCell>
@@ -181,77 +186,14 @@ export default function ActiveLoads() {
                         </Table>
                     </TableContainer>
 
-                    {/* <Row xs={1} md={4} className="g-4">
-
-                        {searchedResult.map((load) => (
-
-                            <Col>
-                                <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                    <Card.Header style={{ display: "flex" }}>
-                                        <div>
-                                            <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "blue" }} />{load.OriginLocation}
-                                            <br />
-
-                                            <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "red" }} /> {load.DestinationLocation}
-                                        </div>
-                                        <img src='https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=' style={{ height: "20%", width: "20%" }} />
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>PhNo:-{load.Number}</Card.Title>
-                                        <Card.Text>
-                                            <b>Products:</b>
-                                            {load.product.map((name) => {
-                                                return <p style={{ display: "inline-block" }}>{name},</p>
-                                            })}
-                                            <div style={{ display: "flex" }}>
-                                                Status -- <div style={{ color: "blue", marginLeft: "0.2rem" }}>{load.isActive}</div>
-                                            </div>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row> */}
                 </div>) : (<div className='container'>
                     <h2 style={{ textAlign: "center" }}>Posted Loads</h2>
                     <br />
-                    {/* <Row xs={1} md={4} className="g-4">
-
-                        {activeLoads.map((load) => (
-
-                            <Col>
-                                <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                    <Card.Header style={{ display: "flex" }}>
-                                        <div>
-                                            <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "blue" }} />{load.OriginLocation}
-                                            <br />
-
-                                            <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "red" }} /> {load.DestinationLocation}
-                                        </div>
-                                        <img src='https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=' style={{ height: "20%", width: "20%" }} />
-                                    </Card.Header>
-                                    <Card.Body>
-                                        <Card.Title>PhNo:-{load.Number}</Card.Title>
-                                        <Card.Text>
-                                            <b>Products:</b>
-                                            {load.product.map((name) => {
-                                                return <p style={{ display: "inline-block" }}>{name},</p>
-                                            })}
-                                            <div style={{ display: "flex" }}>
-                                                Status -- <div style={{ color: "blue", marginLeft: "0.2rem" }}>{load.isActive}</div>
-                                            </div>
-                                        </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
-                    </Row> */}
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
+                                <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
@@ -260,10 +202,14 @@ export default function ActiveLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {activeLoads.map((load) => {
+                                {activeLoads.map((load,idx) => {
                                     const status = Status(load)
+                                    const sNo = idx +1
                                     return (
                                         <StyledTableRow key={load.name}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {load.LoadId}
                                             </StyledTableCell>

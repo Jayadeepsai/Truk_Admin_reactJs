@@ -41,6 +41,7 @@ export default function Users() {
     const [users, setUsers] = useState([])
     const [totalusers, setTotalUsers] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
+    const [dropValue, setDropValue] = useState()
 
     //search users use state
 
@@ -148,7 +149,7 @@ export default function Users() {
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
-                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
+                                        <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Mobile No</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Role</b></StyledTableCell>
@@ -158,7 +159,7 @@ export default function Users() {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {searchedResult.map((user,idx) => {
+                                    {searchedResult.map((user, idx) => {
                                         const y = Verification(user)
                                         const x = AadharVerification(user)
                                         const sNo = idx + 1
@@ -173,16 +174,16 @@ export default function Users() {
                                                 <StyledTableCell align="right">{user.mobileNo}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
                                                 <StyledTableCell align="right">
-                                                     {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
+                                                    {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">
-                                                {x ? <span style={{ color: "green" }}> {user.aadharVerify}</span> : <span style={{ color: "red" }}> {user.aadharVerify}</span>}
-                                                    </StyledTableCell>
-                                                    <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
-                                            <UsersPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
-                                            </StyledTableCell>
+                                                    {x ? <span style={{ color: "green" }}> {user.aadharVerify}</span> : <span style={{ color: "red" }}> {user.aadharVerify}</span>}
+                                                </StyledTableCell>
+                                                <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
+                                                    <UsersPopUp
+                                                        show={isClicked}
+                                                        onHide={() => setIsClicked(false)} />
+                                                </StyledTableCell>
                                             </StyledTableRow>
                                         )
                                     })}
@@ -236,10 +237,11 @@ export default function Users() {
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {users.map((user,idx) => {
+                                    {users.map((user, idx) => {
                                         const y = Verification(user)
                                         const x = AadharVerification(user)
                                         const sNo = idx + 1
@@ -254,16 +256,23 @@ export default function Users() {
                                                 <StyledTableCell align="right">{user.mobileNo}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
                                                 <StyledTableCell align="right">
-                                                     {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
+                                                    {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">
-                                                {x ? <span style={{ color: "green" }}> {user.aadharVerify}</span> : <span style={{ color: "red" }}> {user.aadharVerify}</span>}
+                                                    {x ? <span style={{ color: "green" }}> {user.aadharVerify}</span> : <span style={{ color: "red" }}> {user.aadharVerify}</span>}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
-                                            <UsersPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
-                                            </StyledTableCell>
+                                                    <UsersPopUp
+                                                        show={isClicked}
+                                                        onHide={() => setIsClicked(false)} />
+                                                </StyledTableCell>
+                                                <StyledTableCell align="right">
+                                                    <select value={dropValue} onChange={(e) => (console.log(e.target.value), setDropValue(e.target.value), console.log(dropValue), console.log(e))}>
+                                                        <option value="Verified">Verified</option>
+                                                        <option value="Not Verified">Not Verified</option>
+
+                                                    </select></StyledTableCell>
+                                                <StyledTableCell align="right"><button>Update</button></StyledTableCell>
                                             </StyledTableRow>
                                         )
                                     })}

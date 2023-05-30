@@ -126,6 +126,7 @@ export default function Vehicle() {
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>Truk No</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Truk type</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Mobile No</b></StyledTableCell>
@@ -135,10 +136,13 @@ export default function Vehicle() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {searchedResult.map((vehicle) => {
-
+                                {searchedResult.map((vehicle, idx) => {
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={vehicle.name}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {vehicle.trukvehiclenumber}
                                             </StyledTableCell>
@@ -206,6 +210,7 @@ export default function Vehicle() {
 
                             <TableHead>
                                 <TableRow>
+                                <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>Truk No</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Truk type</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Mobile No</b></StyledTableCell>
@@ -215,10 +220,13 @@ export default function Vehicle() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {vehicles.map((vehicle) => {
-
+                                {vehicles.map((vehicle, idx) => {
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={vehicle.name}>
+                                             <StyledTableCell component="th" scope="row">
+                                                {sNo}
+                                            </StyledTableCell>
                                             <StyledTableCell component="th" scope="row">
                                                 {vehicle.trukvehiclenumber}
                                             </StyledTableCell>
