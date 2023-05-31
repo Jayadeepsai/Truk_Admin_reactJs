@@ -14,6 +14,8 @@ import PrivateRoutes from "./Components/PrivateRoutes";
 import LoginForm from "./Components/LoginForm";
 import HideTopNav from "./Components/HideTopNav/HideTopNav";
 import Queries from "./Components/Queries";
+import PointsWithdraw from "./Components/PointsWithdraw";
+
 
 
 export default function App() {
@@ -38,6 +40,7 @@ export default function App() {
         <Route path="/refferals" element={<PrivateRoutes Component={Refferals} />} />
         <Route path="/vehicles" element={<PrivateRoutes Component={Vehicle} />} />
         <Route path="/queries" element={<PrivateRoutes Component={Queries} />} />
+        <Route path="/points" element={<PrivateRoutes Component={PointsWithdraw} />} />
         {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
         {/* <Route path="/date" element={<Dates />} /> */}
         {/* </Route> */}

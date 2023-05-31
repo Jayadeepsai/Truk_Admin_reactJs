@@ -83,10 +83,17 @@ export default function Header() {
                   <span style={{ color: "white" }}>Referrals</span>
                 } id="basic-nav-dropdown">
                   <NavDropdown.Item href="/refferals">Refferals</NavDropdown.Item>
-                  <NavDropdown.Item href="/completedloads">Withdraws</NavDropdown.Item>
+                  <NavDropdown.Item href="/points">Withdraws</NavDropdown.Item>
 
                 </NavDropdown>
-                <Nav.Link href="/users" style={{ color: "#ffff" }}>Users</Nav.Link>
+                <NavDropdown title={
+                  <span style={{ color: "white" }}>Users</span>
+                } id="basic-nav-dropdown">
+                  <NavDropdown.Item href="/users">TruKApp Users</NavDropdown.Item>
+                  <NavDropdown.Item href="/">User Management</NavDropdown.Item>
+
+                </NavDropdown>
+                {/* <Nav.Link href="/users" style={{ color: "#ffff" }}>Users</Nav.Link> */}
                 {/* <Nav.Link href="/date" style={{ color: "#ffff" }}>Date</Nav.Link> */}
                 <Nav.Link href="/vehicles" style={{ color: "#ffff" }}>Vehicles</Nav.Link>
                 <Nav.Link href="/queries" style={{ color: "#ffff" }}>Support</Nav.Link>

@@ -49,7 +49,9 @@ export default function Queries() {
     const [queries, setqueries] = useState([])
     const [totalQueriesLength, setTotalQueriesLength] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
-    const [queryStatus, setQueryStatus] = useState(propId.queryStatus)
+    const [queryStatus, setQueryStatus] = useState({ idx: 0 })
+    const [update, setUpdate] = useState()
+    const [change, setChange] = useState({ idx: false })
 
     //search users use state
 
@@ -61,7 +63,7 @@ export default function Queries() {
     useEffect(() => {
         getQueries();
 
-    }, [])
+    }, [update])
 
     const getQueries = async () => {
         const postedQueries = await axios.get("http://localhost:3001/admin/allQueries")
@@ -100,14 +102,27 @@ export default function Queries() {
     }
 
 
+    const handleChange = (idx, e) => {
+        setQueryStatus({ [idx]: e.target.value })
+    }
+
+
+    const handleUpdateButton = (idx) => {
+        setChange({ [idx]: true })
+    }
+
+    console.log(change)
+
     const updateStatus = async (id) => {
+        const arr = Object.values(queryStatus)
         const body = {
-            queryStatus: queryStatus
+            queryStatus: arr[0]
         }
         const updatedResult = await axios.put("http://localhost:3001/admin/query/" + id, body)
         try {
             console.log("Query Status has been updated.")
             console.log(updatedResult.data.updatedProduct)
+            setUpdate(Math.random())
         } catch (err) {
             console.log("Error")
         }
@@ -155,11 +170,13 @@ export default function Queries() {
                                     {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Query</b></StyledTableCell> */}
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
+                                    <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Change Status</b></StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {searchedResult.map((query, idx) => {
                                     const sNo = idx + 1
+                                    const stat = query.queryStatus
                                     return (
                                         <StyledTableRow key={query.name}>
                                             <StyledTableCell component="th" scope="row">
@@ -178,10 +195,20 @@ export default function Queries() {
                                                     show={isClicked}
                                                     onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
-                                            <StyledTableCell align="right" ><select value={queryStatus} onChange={(e) => (setQueryStatus(e.target.value), updateStatus(propId._id), setQuery(query))}>
-                                                <option value="Pending">Pending</option>
-                                                <option value="Completed">Completed</option>
-                                            </select></StyledTableCell>
+                                            <StyledTableCell align="right" style={{ color: stat === "Completed" ? "green" : "red" }}><b>{query.queryStatus}</b></StyledTableCell>
+
+                                            <StyledTableCell align="right">
+                                                <div>
+                                                    <select value={queryStatus.idx} onChange={(e) => (handleChange(idx, e), setQuery(query), handleUpdateButton(idx))} style={{ width: '6rem', height: '2rem', borderRadius: '5px' }}>
+                                                        <option >Select</option>
+                                                        <option style={{ color: "red" }} value="Pending">Pending</option>
+                                                        <option style={{ color: "green" }} value="Completed">Completed</option>
+                                                    </select>
+                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} style={{ slot: "end", margin: "1rem" }}>Update</Button> :
+                                                        <Button disabled style={{ slot: "end", margin: "1rem" }}>Update</Button>
+                                                    }
+                                                </div>
+                                            </StyledTableCell>
 
                                         </StyledTableRow>
                                     )
@@ -204,11 +231,13 @@ export default function Queries() {
                                     {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Query</b></StyledTableCell> */}
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
+                                    <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Change Status</b></StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {queries.map((query, idx) => {
                                     const sNo = idx + 1
+                                    const stat = query.queryStatus
                                     return (
                                         <StyledTableRow key={query.name}>
                                             <StyledTableCell component="th" scope="row">
@@ -219,21 +248,26 @@ export default function Queries() {
                                             </StyledTableCell>
                                             <StyledTableCell align="right">{query.Name}</StyledTableCell>
                                             <StyledTableCell align="right">{query.PhoneNumber}</StyledTableCell>
-                                            {/* <StyledTableCell align="right">
-                                            {query.Query}
-                                            </StyledTableCell> */}
                                             <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
                                                 <QueriesPop
                                                     show={isClicked}
                                                     onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
+                                            <StyledTableCell align="right" style={{ color: stat === "Completed" ? "green" : "red" }}><b>{query.queryStatus}</b></StyledTableCell>
 
-                                            <StyledTableCell key={`dropdwon-${idx}`} align="right">
-                                                <select key={`dropdwon-${idx}`} value={queryStatus} onChange={(e) => (setQueryStatus(e.target.value), console.log(`Selected element ${idx}: ${queryStatus}`), console.log(queryStatus), updateStatus(propId._id), setQuery(query))} style={{ width: '6rem', height: '2rem', borderRadius: '5px', color: pending ? "red" : "green" }}>
-                                                    <option style={{ color: "red" }} value="Pending">Pending</option>
-                                                    <option style={{ color: "green" }} value="Completed">Completed</option>
-                                                </select>
+                                            <StyledTableCell align="right">
+                                                <div>
+                                                    <select value={queryStatus.idx} onChange={(e) => (handleChange(idx, e), setQuery(query), handleUpdateButton(idx))} style={{ width: '6rem', height: '2rem', borderRadius: '5px' }}>
+                                                        <option >Select</option>
+                                                        <option style={{ color: "red" }} value="Pending">Pending</option>
+                                                        <option style={{ color: "green" }} value="Completed">Completed</option>
+                                                    </select>
+                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} style={{ slot: "end", margin: "1rem" }}>Update</Button> :
+                                                        <Button disabled style={{ slot: "end", margin: "1rem" }}>Update</Button>
+                                                    }
+                                                </div>
                                             </StyledTableCell>
+
 
                                         </StyledTableRow>
                                     )

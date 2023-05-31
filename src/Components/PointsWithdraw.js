@@ -15,7 +15,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "react-bootstrap";
-import UsersPopUp from './UsersPopUp';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -37,7 +36,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function Users() {
+export default function PointsWithdraw() {
+
     const [users, setUsers] = useState([])
     const [totalusers, setTotalUsers] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
@@ -71,11 +71,6 @@ export default function Users() {
 
     }
 
-    const setUser = (user) => {
-        localStorage.setItem('userPop', JSON.stringify(user))
-    }
-
-
     const searchUsers = async (key) => {
         console.log(key)
         const searchData = await axios.get("http://localhost:3001/admin/searchByLetterForUsers/" + key)
@@ -93,29 +88,6 @@ export default function Users() {
         }
     }
 
-    function Role(user) {
-        if (user.role === "Shipper") {
-            return true
-        } else return false
-    }
-
-
-    function Verification(user) {
-        if (user.gstVerify === "Verified") {
-            return true
-        } else return false
-
-    }
-
-    function AadharVerification(user) {
-        if (user.aadharVerify === "Verified") {
-            return true
-        } else return false
-
-    }
-
-
-
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
             searchUsers(searchKey);
@@ -124,9 +96,7 @@ export default function Users() {
 
 
 
-
     return (
-
         totalusers ? (
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100vh - 56px)" }}>
                 <p>No loads are posted</p>
@@ -144,24 +114,23 @@ export default function Users() {
                 </InputGroup>
                 {isSearchCalled ? (
                     <div className='container'>
-                        <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to users</span>
+                        <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to withdraws</span>
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
                                 <TableHead>
                                     <TableRow>
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Mobile No</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Role</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Account</b></StyledTableCell>
+                                        {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell> */}
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {searchedResult.map((user, idx) => {
-                                        const y = Verification(user)
-                                        const x = AadharVerification(user)
+
                                         const sNo = idx + 1
                                         return (
                                             <StyledTableRow key={user.name}>
@@ -171,19 +140,19 @@ export default function Users() {
                                                 <StyledTableCell component="th" scope="row">
                                                     {user.firstName}{user.lastName}
                                                 </StyledTableCell>
-                                                <StyledTableCell align="right">{user.mobileNo}</StyledTableCell>
+                                                <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
-                                                <StyledTableCell align="right">
+                                                {/* <StyledTableCell align="right">
                                                     {y ? <span style={{ color: "green" }}> <b>{user.gstVerify}</b></span> : <span style={{ color: "red" }}><b>{user.gstVerify}</b> </span>}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">
                                                     {x ? <span style={{ color: "green" }}> <b>{user.aadharVerify}</b></span> : <span style={{ color: "red" }}> <b>{user.aadharVerify}</b></span>}
-                                                </StyledTableCell>
+                                                </StyledTableCell> 
                                                 <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
                                                     <UsersPopUp
                                                         show={isClicked}
                                                         onHide={() => setIsClicked(false)} />
-                                                </StyledTableCell>
+                                                </StyledTableCell>*/}
                                             </StyledTableRow>
                                         )
                                     })}
@@ -191,40 +160,11 @@ export default function Users() {
                             </Table>
                         </TableContainer>
 
-                        {/* <Row xs={1} md={4} className="g-4">
-                            {searchedResult.map((user) => {
-                                const x = Role(user)
-                                const y = Verification(user)
-                                return (
 
-                                    <Col>
-
-                                        <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                            <Card.Header style={{ display: "flex" }}>
-                                                <div>
-                                                    {x ? <ImIcons.ImUser style={{ marginRight: "1px", color: "blue" }} /> : <ImIcons.ImUsers style={{ marginRight: "1px", color: "blue" }} />}
-
-                                                    <br />
-                                                </div>
-                                                <h5 style={{ marginLeft: "1rem" }}>{user.firstName} {user.lastName}</h5>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <Card.Title>{user.role}</Card.Title>
-                                                <p>PhNo:-{user.mobileNo}</p>
-                                                <Card.Text>
-                                                    GST Verification  --  {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                )
-                            })}
-                        </Row> */}
                     </div>
                 ) : (
                     <div className='container'>
-                        <h2 style={{ textAlign: "center" }}>TruKApp Users</h2>
+                        <h2 style={{ textAlign: "center" }}>Withdraw Requests</h2>
                         <br />
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -232,18 +172,17 @@ export default function Users() {
                                     <TableRow>
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Mobile No</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Role</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Account</b></StyledTableCell>
+                                        {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
-                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell> */}
                                         {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell> */}
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {users.map((user, idx) => {
-                                        const y = Verification(user)
-                                        const x = AadharVerification(user)
+
                                         const sNo = idx + 1
                                         return (
                                             <StyledTableRow key={user.name}>
@@ -253,9 +192,9 @@ export default function Users() {
                                                 <StyledTableCell >
                                                     {user.firstName}{user.lastName}
                                                 </StyledTableCell>
-                                                <StyledTableCell align="right">{user.mobileNo}</StyledTableCell>
+                                                <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
-                                                <StyledTableCell align="right">
+                                                {/* <StyledTableCell align="right">
                                                     {y ? <span style={{ color: "green" }}> <b>{user.gstVerify}</b></span> : <span style={{ color: "red" }}><b>{user.gstVerify}</b> </span>}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">
@@ -265,43 +204,15 @@ export default function Users() {
                                                     <UsersPopUp
                                                         show={isClicked}
                                                         onHide={() => setIsClicked(false)} />
-                                                </StyledTableCell>
-                                              
+                                                </StyledTableCell> */}
+
                                             </StyledTableRow>
                                         )
                                     })}
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        {/* <Row xs={1} md={4} className="g-4">
-                            {users.map((user) => {
-                                const x = Role(user)
-                                const y = Verification(user)
-                                return (
 
-                                    <Col>
-                                        <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                            <Card.Header style={{ display: "flex" }}>
-                                                <div>
-                                                    {x ? <ImIcons.ImUser style={{ marginRight: "1px", color: "blue" }} /> : <ImIcons.ImUsers style={{ marginRight: "1px", color: "blue" }} />}
-
-                                                    <br />
-                                                </div>
-                                                <h5 style={{ marginLeft: "1rem" }}>{user.firstName} {user.lastName}</h5>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <Card.Title>{user.role}</Card.Title>
-                                                <p>PhNo:-{user.mobileNo}</p>
-                                                <Card.Text>
-                                                    GST Verification  --  {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                )
-                            })}
-                        </Row> */}
                     </div>)}
 
             </>)
