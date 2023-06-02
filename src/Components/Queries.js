@@ -248,7 +248,7 @@ export default function Queries() {
                                             </StyledTableCell>
                                             <StyledTableCell align="right">{query.Name}</StyledTableCell>
                                             <StyledTableCell align="right">{query.PhoneNumber}</StyledTableCell>
-                                            <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
+                                            <StyledTableCell align="right" ><Button variant='light' style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
                                                 <QueriesPop
                                                     show={isClicked}
                                                     onHide={() => setIsClicked(false)} />

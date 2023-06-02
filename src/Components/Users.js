@@ -16,6 +16,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "react-bootstrap";
 import UsersPopUp from './UsersPopUp';
+import Modal from 'react-bootstrap/Modal';
+import * as XLSX from "xlsx";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -122,8 +124,24 @@ export default function Users() {
         }
     }
 
+    const values = [true,];
+    const [fullscreen, setFullscreen] = useState(true);
+    const [show, setShow] = useState(false);
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
 
 
+    async function extractParsedData() {
+
+        const jsonSheet = XLSX.utils.json_to_sheet(users)
+        console.log(jsonSheet)
+        var newWb = XLSX.utils.book_new();
+        const wb = XLSX.utils.book_append_sheet(newWb, jsonSheet)
+        console.log(wb)
+        return XLSX.writeFile(newWb, "UserData.xlsx")
+    }
 
     return (
 
@@ -142,6 +160,7 @@ export default function Users() {
                     />
                     <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchUsers(searchKey)} /></InputGroup.Text>
                 </InputGroup>
+                <Button onClick={extractParsedData}>Download</Button>
                 {isSearchCalled ? (
                     <div className='container'>
                         <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to users</span>
@@ -179,10 +198,22 @@ export default function Users() {
                                                 <StyledTableCell align="right">
                                                     {x ? <span style={{ color: "green" }}> <b>{user.aadharVerify}</b></span> : <span style={{ color: "red" }}> <b>{user.aadharVerify}</b></span>}
                                                 </StyledTableCell>
-                                                <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
-                                                    <UsersPopUp
+                                                <StyledTableCell align="right" >
+                                                    {values.map((v, idx) => (
+                                                        <Button key={idx} className="me-2 mb-2" style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' }} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
+                                                            View
+                                                            {typeof v === 'string' && `below ${v.split('-')[0]}`}
+                                                        </Button>
+                                                    ))}
+                                                    {/* <UsersPopUp
                                                         show={isClicked}
-                                                        onHide={() => setIsClicked(false)} />
+                                                        onHide={() => setIsClicked(false)} /> */}
+                                                    <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+                                                        <Modal.Header closeButton style={{ backgroundColor: '#F58E26' }}>
+                                                            {/* <Modal.Title>Modal</Modal.Title> */}
+                                                        </Modal.Header>
+                                                        <Modal.Body><UsersPopUp /></Modal.Body>
+                                                    </Modal>
                                                 </StyledTableCell>
                                             </StyledTableRow>
                                         )
@@ -261,12 +292,24 @@ export default function Users() {
                                                 <StyledTableCell align="right">
                                                     {x ? <span style={{ color: "green" }}> <b>{user.aadharVerify}</b></span> : <span style={{ color: "red" }}> <b>{user.aadharVerify}</b></span>}
                                                 </StyledTableCell>
-                                                <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setUser(user) }}>View</b></Button>
-                                                    <UsersPopUp
+                                                <StyledTableCell align="right" >
+                                                    {values.map((v, idx) => (
+                                                        <Button key={idx} className="me-2 mb-2" style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' }} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
+                                                            View
+                                                            {typeof v === 'string' && `below ${v.split('-')[0]}`}
+                                                        </Button>
+                                                    ))}
+                                                    {/* <UsersPopUp
                                                         show={isClicked}
-                                                        onHide={() => setIsClicked(false)} />
+                                                        onHide={() => setIsClicked(false)} /> */}
+                                                    <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
+                                                        <Modal.Header closeButton style={{ backgroundColor: '#F58E26' }}>
+                                                            {/* <Modal.Title>Modal</Modal.Title> */}
+                                                        </Modal.Header>
+                                                        <Modal.Body><UsersPopUp /></Modal.Body>
+                                                    </Modal>
                                                 </StyledTableCell>
-                                              
+
                                             </StyledTableRow>
                                         )
                                     })}

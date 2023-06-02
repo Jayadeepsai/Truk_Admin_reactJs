@@ -15,6 +15,9 @@ import LoginForm from "./Components/LoginForm";
 import HideTopNav from "./Components/HideTopNav/HideTopNav";
 import Queries from "./Components/Queries";
 import PointsWithdraw from "./Components/PointsWithdraw";
+import Management from "./Components/Management";
+import Messaging from "./Components/Messaging";
+
 
 
 
@@ -33,7 +36,7 @@ export default function App() {
       {/* <MySidenav /> */}
 
       <Routes>
-        <Route path="/" element={<PrivateRoutes Component={Home} />} />
+        <Route path="/home" element={<PrivateRoutes Component={Home} />} />
         <Route path="/activeloads" element={<PrivateRoutes Component={ActiveLoads} />} />
         <Route path="/completedloads" element={<PrivateRoutes Component={CompletedLoads} />} />
         <Route path="/users" element={<PrivateRoutes Component={Users} />} />
@@ -41,6 +44,8 @@ export default function App() {
         <Route path="/vehicles" element={<PrivateRoutes Component={Vehicle} />} />
         <Route path="/queries" element={<PrivateRoutes Component={Queries} />} />
         <Route path="/points" element={<PrivateRoutes Component={PointsWithdraw} />} />
+        <Route path="/management" element={<PrivateRoutes Component={Management} />} />
+        <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
         {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
         {/* <Route path="/date" element={<Dates />} /> */}
         {/* </Route> */}

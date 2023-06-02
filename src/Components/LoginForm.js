@@ -36,7 +36,7 @@ const LoginForm = (props) => {
                     alert('Login succesfull')
                     localStorage.setItem('adminEmail', JSON.stringify(response.data.data));
                     localStorage.setItem('isLoggedIn', true)
-                    navigate('/');
+                    navigate('/home');
                 } else {
                     alert('Please check your credentials')
                 }
@@ -52,16 +52,16 @@ const LoginForm = (props) => {
     };
     return (
         <>
-            <div className="trukapp">
-                <div className="img">
+            <div className="trukapp" style={{display:'flex'}}>
+                <div className="img" >
                     <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" width="750px" height="750px" />
                 </div>
 
-                <div className="container">
+                <div style={{textAlign:'center'}}>
                     <div style={{ paddingLeft: '30%', fontSize: '100px' }}>
-                        <img src="http://trukapp.com/wp-content/uploads/2021/11/1599843225043_truckapp-5.svg" />
+                        <img src="http://trukapp.com/wp-content/uploads/2021/11/1599843225043_truckapp-5.svg" width='200px' />
                     </div>
-                    <div className="login" >
+                    <div className="login"  >
                         <div style={{ textAlign: 'center', fontSize: '20px' }}>
                             <h3>Login to your account</h3>
                             <form style={{ textAlign: 'center', fontSize: '30px' }}>
@@ -132,6 +132,7 @@ const LoginForm = (props) => {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </>
     )
