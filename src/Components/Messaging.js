@@ -11,7 +11,7 @@ export default function Messaging() {
 
         if (option === "Shippers") {
             axios
-                .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+                .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
                 .then(response => {
                     const shippersdata = response.data.users.filter(user => user.role === "Shipper")
                     const uniqueDeviceIds = shippersdata.map(user => user.uniqueDeviceId);
@@ -23,7 +23,7 @@ export default function Messaging() {
                 });
         }  else if (option === "Transporters") {
                 axios
-                    .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+                    .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
                     .then(response => {
                         const transportersdata = response.data.users.filter(user => user.role === "Transporter")
                         const uniqueDeviceIds = transportersdata.map(user => user.uniqueDeviceId);
@@ -35,7 +35,7 @@ export default function Messaging() {
         
         }else if (option === "Agents") {
             axios
-                .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+                .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
                 .then(response => {
                     const Agentsdata = response.data.users.filter(user => user.role === "Agent")
                     const uniqueDeviceIds = Agentsdata.map(user => user.uniqueDeviceId);
@@ -47,7 +47,7 @@ export default function Messaging() {
     
     }else if (option === "FleetOwner") {
         axios
-            .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+            .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
             .then(response => {
                 const Fleetdata = response.data.users.filter(user => user.role === "Fleet Owner")
                 const uniqueDeviceIds = Fleetdata.map(user => user.uniqueDeviceId);
@@ -60,7 +60,7 @@ export default function Messaging() {
 }
 else if (option === "All") {
     axios
-        .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+        .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
         .then(response => {
             const Alldata = response.data.users
             const uniqueDeviceIds = Alldata.map(user => user.uniqueDeviceId);

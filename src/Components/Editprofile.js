@@ -21,7 +21,7 @@ const Editprofile = (props, getdetails) => {
             password: password,
             role: "User"
         }
-        axios.post('http://localhost:3001/admin/signupAdmin', body)
+        axios.post('https://motionless-cowboy-hat-ant.cyclic.app/admin/signupAdmin', body)
             .then((response) => {
                 console.log("user is added")
                 getdetails()

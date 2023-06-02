@@ -29,7 +29,7 @@ const LoginForm = (props) => {
             email: email,
             password: password
         }
-        await axios.post("http://localhost:3001/admin/loginAdmin", body)
+        await axios.post("https://motionless-cowboy-hat-ant.cyclic.app/admin/loginAdmin", body)
             .then((response) => {
                 console.log(response);
                 if (response.status === 200) {

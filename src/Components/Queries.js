@@ -66,7 +66,7 @@ export default function Queries() {
     }, [update])
 
     const getQueries = async () => {
-        const postedQueries = await axios.get("http://localhost:3001/admin/allQueries")
+        const postedQueries = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allQueries")
         try {
             if (postedQueries.data.TotalQueries !== 0) {
                 setqueries(postedQueries.data.queries)
@@ -86,7 +86,7 @@ export default function Queries() {
 
     const searchQueries = async (key) => {
         console.log(key)
-        const searchData = await axios.get("http://localhost:3001/admin/searchByLetterForQueries/" + key)
+        const searchData = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/searchByLetterForQueries/" + key)
         try {
             if (searchData.data.length !== 0) {
                 setSearchedResult(searchData.data.data)
@@ -118,7 +118,7 @@ export default function Queries() {
         const body = {
             queryStatus: arr[0]
         }
-        const updatedResult = await axios.put("http://localhost:3001/admin/query/" + id, body)
+        const updatedResult = await axios.put("https://motionless-cowboy-hat-ant.cyclic.app/admin/query/" + id, body)
         try {
             console.log("Query Status has been updated.")
             console.log(updatedResult.data.updatedProduct)

@@ -57,7 +57,7 @@ export default function Refferals(){
     }, [])
 
     const getUsers = async () => {
-        const users = await axios.get("http://localhost:3001/admin/allUsers")
+        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
         try {
             if (users.data.TotalUsers !== 0) {
                 setUsers(users.data.users)
@@ -75,7 +75,7 @@ export default function Refferals(){
 
     const searchUsers = async (key) => {
         console.log(key)
-        const searchData = await axios.get("http://localhost:3001/admin/searchByLetterForUsers/" + key)
+        const searchData = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/searchByLetterForUsers/" + key)
         try {
             if (searchData.data.length !== 0) {
                 setSearchedResult(searchData.data.data)

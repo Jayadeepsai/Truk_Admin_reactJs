@@ -18,7 +18,7 @@ export default function Dates(props) {
   // }, [])
 
   // const getActiveLoads = async () => {
-  //   const activeLoads = await axios.get("http://localhost:3001/quotes/loadsByStatus/Active")
+  //   const activeLoads = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/quotes/loadsByStatus/Active")
   //   try {
   //     if (activeLoads.data.TotalLoads !== 0) {
   //       setActiveLoads(activeLoads.data.load)

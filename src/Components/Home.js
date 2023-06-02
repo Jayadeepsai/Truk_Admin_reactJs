@@ -21,7 +21,7 @@ export default function Home(props) {
     const [agentsCount, setAgentsCount] = useState()
 
     const getShippers = async () => {
-        const shippers = await axios.get("http://localhost:3001/admin/usersFilterForShipper/Shipper")
+        const shippers = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Shipper")
         try {
             if (shippers.data.TotalUsers !== 0) {
                 setShippers(shippers.data.users)
@@ -38,7 +38,7 @@ export default function Home(props) {
     }
 
     const getTransporters = async () => {
-        const Transporters = await axios.get("http://localhost:3001/admin/usersFilterForShipper/Transporter")
+        const Transporters = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Transporter")
         try {
             if (Transporters.data.TotalUsers !== 0) {
                 setTransporter(Transporters.data.users)
@@ -56,7 +56,7 @@ export default function Home(props) {
 
 
     const getAgents = async () => {
-        const Agents = await axios.get("http://localhost:3001/admin/usersFilterForShipper/Agents")
+        const Agents = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Agents")
         try {
             if (Agents.data.TotalUsers !== 0) {
                 setAgents(Agents.data.users)

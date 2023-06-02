@@ -49,7 +49,7 @@ export default function Management() {
 
     const getDetails = () => {
         axios
-            .get('http://localhost:3001/admin/getuser')
+            .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/getuser')
             .then(response => {
                 setData(response.data.user);
                 console.log(response.data.user);
@@ -62,7 +62,7 @@ export default function Management() {
     const deleteHandler = (id) => {
         alert('Are you sure you want to delete?');
         axios
-            .delete('http://localhost:3001/admin/delete/' + id)
+            .delete('https://motionless-cowboy-hat-ant.cyclic.app/admin/delete/' + id)
             .then((response) => {
                 const updatedData = data.filter((row) => row._id !== id);
                 setData(updatedData);
@@ -104,7 +104,7 @@ export default function Management() {
           
         };
 
-        axios.put('http://localhost:3001/admin/update/' + details._id, body)
+        axios.put('https://motionless-cowboy-hat-ant.cyclic.app/admin/update/' + details._id, body)
             .then((response) => {
                 console.log("User is updated");
                 // Refresh the data after updating

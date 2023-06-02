@@ -58,7 +58,7 @@ export default function ActiveLoads() {
     }, [])
 
     const getActiveLoads = async () => {
-        const activeLoads = await axios.get("http://localhost:3001/admin/allPostedLoads")
+        const activeLoads = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allPostedLoads")
         try {
             if (activeLoads.data.TotalLoads !== 0) {
                 setActiveLoads(activeLoads.data.loads)
@@ -80,7 +80,7 @@ export default function ActiveLoads() {
 
     const searchLoads = async (key) => {
         console.log(key)
-        const searchData = await axios.get("http://localhost:3001/admin/searchByLetterForActiveLoads/" + key)
+        const searchData = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/searchByLetterForActiveLoads/" + key)
         try {
             if (searchData.data.length !== 0) {
                 setSearchedResult(searchData.data.data)

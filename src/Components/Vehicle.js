@@ -58,7 +58,7 @@ export default function Vehicle() {
     }, [])
 
     const getVehicles = async () => {
-        const vehicles = await axios.get("http://localhost:3001/admin/allVehiclesForAdmin")
+        const vehicles = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allVehiclesForAdmin")
         try {
             if (vehicles.data.totalVehicles !== 0) {
                 setVehicles(vehicles.data.vehicles)
@@ -75,7 +75,7 @@ export default function Vehicle() {
     }
 
     const searchVehicles = async (key) => {
-        const searchData = await axios.get("http://localhost:3001/admin/searchByLetterForVehicles/" + key)
+        const searchData = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/searchByLetterForVehicles/" + key)
         try {
             if (searchData.data.length !== 0) {
                 setSearchedResult(searchData.data.data)
