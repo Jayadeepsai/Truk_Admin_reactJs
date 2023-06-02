@@ -58,6 +58,19 @@ export default function Messaging() {
             });
 
 }
+else if (option === "All") {
+    axios
+        .get('https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers')
+        .then(response => {
+            const Alldata = response.data.users
+            const uniqueDeviceIds = Alldata.map(user => user.uniqueDeviceId);
+            console.log(uniqueDeviceIds);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+
+}
         }
     return (
         <div style={{ marginTop: '10px', textAlign: 'right' }}>
@@ -94,6 +107,7 @@ export default function Messaging() {
                            
                            <select  style={{width:'30.5vw',height:"40px",borderRadius:'10px'}} onChange={(e) => getdata(e.target.value)} > 
                                 <option  selected> Send to</option>
+                                <option  value="All"> All</option>
                                 <option value="Shippers">Shippers</option>
                                 <option value="Transporters">Transporters</option>
                                 <option value="Agents">Agents</option>
