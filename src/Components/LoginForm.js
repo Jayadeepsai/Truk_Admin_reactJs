@@ -53,13 +53,11 @@ const LoginForm = (props) => {
     return (
         <>
             <div className="trukapp" style={{display:'flex'}}>
-                <div className="img" >
-                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" width="750px" height="750px" />
-                </div>
+              
 
                 <div style={{textAlign:'center'}}>
-                    <div style={{ paddingLeft: '30%', fontSize: '100px' }}>
-                        <img src="http://trukapp.com/wp-content/uploads/2021/11/1599843225043_truckapp-5.svg" width='200px' />
+                    <div style={{  fontSize: '100px' }}>
+                        <img src="http://trukapp.com/wp-content/uploads/2021/11/1599843225043_truckapp-5.svg" width='300px' height='300px' />
                     </div>
                     <div className="login"  >
                         <div style={{ textAlign: 'center', fontSize: '20px' }}>
@@ -74,8 +72,8 @@ const LoginForm = (props) => {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                         /> */}
-                                        <InputGroup className="mb-3"  style={{ width: '30rem', margin: 'auto' }}>
-                                            <InputGroup.Text id="basic-addon1" style={{width:"6rem",backgroundColor: '#F58E26'}}>Email</InputGroup.Text>
+                                        <InputGroup className="mb-3" style={{ width: '30rem', margin: 'auto' }}>
+                                            <InputGroup.Text id="basic-addon1" style={{ width: "6rem", alignItems:'center' }}>Email</InputGroup.Text>
                                             <Form.Control
                                                 type="email"
                                                 placeholder="Email"
@@ -100,7 +98,7 @@ const LoginForm = (props) => {
                                         </span>
                                         </InputGroup> */}
                                         <InputGroup className="mb-3" style={{ width: '30rem', margin: 'auto' }}>
-                                        <InputGroup.Text id="basic-addon1" style={{width:"6rem",backgroundColor: '#F58E26'}}>Password</InputGroup.Text>
+                                            <InputGroup.Text id="basic-addon1" style={{ width: "6rem", textAlign:'center' }}>Password</InputGroup.Text>
                                             <Form.Control
 
                                                 type={showPassword ? 'text' : 'password'}
@@ -116,23 +114,26 @@ const LoginForm = (props) => {
                                         <a href="" style={{fontSize:"1rem"}}>Forget password?</a>
                                     </div> */}
                                 </div>
-                                
-                                    {/* <div className="radi">
+
+                                {/* <div className="radi">
                                         <input type="radio" />&nbsp;
                                         <a href="">Remember me</a>
                                     </div> */}
-                                    
 
-                          
+
+
                                 <div >
-                                    <Button className="button" style={{ backgroundColor: '#F58E26', marginLeft: '20px' }} onClick={(e) => handleSubmit(e)}>Login now</Button>
+                                    <Button className="button" variant='light' style={{ backgroundColor: '#F58E26', marginLeft: '20px', color: "white" }} onClick={(e) => handleSubmit(e)}>Login now</Button>
                                 </div>
 
                             </form>
                         </div>
                     </div>
                 </div>
-                
+                <div className="img" >
+                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" width="750px" height="750px" />
+                </div>
+
             </div>
         </>
     )

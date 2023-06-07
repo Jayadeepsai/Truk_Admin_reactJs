@@ -46,19 +46,19 @@ const Editprofile = (props, getdetails) => {
                             <label>Enter First Name:</label><br />
                             <input type="text"
                                 onChange={(e) => setFirstName(e.target.value)} /><br />
-                            <label>Enter Last Name</label><br />
+                            <label>Enter Last Name:</label><br />
                             <input type="text"
                                 onChange={(e) => setLastName(e.target.value)} /><br />
-                            <label>Enter MailID</label><br />
+                            <label>Enter Mail:</label><br />
                             <input
                                 type="email"
                                 onChange={(e) => setMailID(e.target.value)} /><br />
-                            <label>Enter Mobile Number</label><br />
+                            <label>Enter Mobile Number:</label><br />
                             <input
                                 type="number"
                                 onChange={(e) => setMobileNumber(e.target.value)} /><br />
 
-                            <label>Enter Password</label><br />
+                            <label>Enter Password:</label><br />
                             <input type="text"
                                 onChange={(e) => setPassword(e.target.value)} /><br />
                             {/* <label>Confirm Password</label><br />
