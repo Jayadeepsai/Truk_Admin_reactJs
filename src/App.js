@@ -40,37 +40,8 @@ export default function App() {
       {/* <Sidebar /> */}
       {/* <MySidenav /> */}
 
-      {userInfo[0].role === "Admin" ? (<>
 
-        <Routes>
-          <Route path="/home" element={<PrivateRoutes Component={Home} />} />
-          <Route path="/activeloads" element={<PrivateRoutes Component={ActiveLoads} />} />
-          <Route path="/completedloads" element={<PrivateRoutes Component={CompletedLoads} />} />
-          <Route path="/users" element={<PrivateRoutes Component={Users} />} />
-          <Route path="/refferals" element={<PrivateRoutes Component={Refferals} />} />
-          <Route path="/vehicles" element={<PrivateRoutes Component={Vehicle} />} />
-          <Route path="/queries" element={<PrivateRoutes Component={Queries} />} />
-          <Route path="/points" element={<PrivateRoutes Component={PointsWithdraw} />} />
-          <Route path="/management" element={<PrivateRoutes Component={Management} />} />
-          <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
-          <Route path="/shipper" element={<PrivateRoutes Component={Shippers} />} />
-          <Route path="/transporter" element={<PrivateRoutes Component={Transporters} />} />
-          <Route path="/agent" element={<PrivateRoutes Component={Agents} />} />
-          <Route path="/Fleet" element={<PrivateRoutes Component={Fleetowner} />} />
-          {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
-          {/* <Route path="/date" element={<Dates />} /> */}
-          {/* </Route> */}
-          <Route path='/login' element={<LoginForm />} />
-        </Routes>
-      </>) : (<>
-        <Routes>
-          <Route path="/home" element={<PrivateRoutes Component={Home} />} />
-          <Route path='/login' element={<LoginForm />} />
-          <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
-        </Routes>
-      </>)}
-
-      {/* <Routes>
+      <Routes>
         <Route path="/home" element={<PrivateRoutes Component={Home} />} />
         <Route path="/activeloads" element={<PrivateRoutes Component={ActiveLoads} />} />
         <Route path="/completedloads" element={<PrivateRoutes Component={CompletedLoads} />} />
@@ -80,12 +51,16 @@ export default function App() {
         <Route path="/queries" element={<PrivateRoutes Component={Queries} />} />
         <Route path="/points" element={<PrivateRoutes Component={PointsWithdraw} />} />
         <Route path="/management" element={<PrivateRoutes Component={Management} />} />
-        <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} /> */}
-      {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
-      {/* <Route path="/date" element={<Dates />} /> */}
-      {/* </Route> */}
-      {/* <Route path='/login' element={<LoginForm />} />
-      </Routes> */}
+        <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
+        <Route path="/shipper" element={<PrivateRoutes Component={Shippers} />} />
+        <Route path="/transporter" element={<PrivateRoutes Component={Transporters} />} />
+        <Route path="/agent" element={<PrivateRoutes Component={Agents} />} />
+        <Route path="/Fleet" element={<PrivateRoutes Component={Fleetowner} />} />
+        {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
+        {/* <Route path="/date" element={<Dates />} /> */}
+        {/* </Route> */}
+        <Route path='/login' element={<LoginForm />} />
+      </Routes>
 
     </Router>
   );
