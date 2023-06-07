@@ -8,6 +8,7 @@ export default function Messaging() {
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState({})
     const [desc, setDesc] = useState()
+    const [title, setTitle] = useState()
     const [userType, setUserType] = useState([])
 
 
@@ -90,7 +91,8 @@ export default function Messaging() {
     const handleMessage = async () => {
 
         const body = {
-            title: desc,
+            title: title,
+            description: desc,
             externalId: userType
         }
         const result = await axios.post("http://localhost:3001/admin/sendMessages", body)
@@ -124,6 +126,8 @@ export default function Messaging() {
                                 type="text"
                                 placeholder="Title"
                                 autoFocus
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                             />
                         </Form.Group>
                         <Form.Group

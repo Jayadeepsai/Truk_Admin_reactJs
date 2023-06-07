@@ -64,6 +64,7 @@ export default function Header() {
 
             <Nav>
               <Nav className="me-auto">
+              <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
                 <NavDropdown title={
                   <span style={{ color: "white" }}>Loads</span>
                 } id="basic-nav-dropdown">
