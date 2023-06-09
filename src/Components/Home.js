@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios"
 import { Button } from "react-bootstrap"
 import { Card } from "react-bootstrap"
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 export default function Home(props) {
-
+const navigate = useNavigate();
     useEffect(() => {
-        getShippers(); getTransporters(); getAgents();
+        getShippers(); getTransporters(); getAgents(); getfleetowners();
     }, [])
 
     const [shippers, setShippers] = useState([])
@@ -19,6 +20,8 @@ export default function Home(props) {
     const [transporterCount, setTransporterCount] = useState()
     const [agents, setAgents] = useState([])
     const [agentsCount, setAgentsCount] = useState()
+    const [fleetowner, setfleetowner] = useState([])
+    const [fleetownerCount, setfleetownerCount] = useState()
 
     const getShippers = async () => {
         const shippers = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Shipper")
@@ -56,7 +59,7 @@ export default function Home(props) {
 
 
     const getAgents = async () => {
-        const Agents = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Agents")
+        const Agents = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Agent")
         try {
             if (Agents.data.TotalUsers !== 0) {
                 setAgents(Agents.data.users)
@@ -72,15 +75,41 @@ export default function Home(props) {
         }
 
     }
+    const getfleetowners = async () => {
+        const Fleetowner = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Fleet Owner")
+        try {
+            if (Fleetowner.data.TotalUsers !== 0) {
+                setfleetowner(Fleetowner.data.users)
+                setfleetownerCount(Fleetowner.data.TotalUsers)
+            } else {
 
+                console.log("No Transporters registered")
+            }
 
+        } catch (err) {
+            console.log(err)
+        }
 
+    }
+ const shipperscount =() =>{
+    navigate('/shipper')
+ }
+ const agentsscount =() =>{
+    navigate('/agent')
+ }
+const transporterdcount=()=>{
+    navigate('/transporter')
+}
+
+const Fleetcount =()=>{
+    navigate('/Fleet')
+}
     return (
         <>
         <br />
             <h2 style={{textAlign:'center', fontSize:'40px'}}>Dashboard</h2>
             <div style={{ display: 'flex', marginBottom: '30px', }}>
-                <Card style={{ width: '350px', height: '200px', left: '400px', top: '80px', borderColor: '#F58E26', }}>
+                <Card style={{ width: '350px', height: '200px', left: '400px', top: '80px', borderColor: '#F58E26', }} onClick={shipperscount}>
                     <Card.Body>
                         <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Shippers</Card.Title>
                         <p style={{ marginLeft: '70px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{shipperCount}</b></p>
@@ -91,24 +120,28 @@ export default function Home(props) {
 
                     </Card.Body>
                 </Card>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Card style={{ width: '350px', height: '200px', left: '483px', top: '80px', borderColor: '#F58E26' }}>
+                
+                <Card style={{ width: '350px', height: '200px', left: '483px', top: '80px', borderColor: '#F58E26' }}onClick={agentsscount}>
                     <Card.Body>
                         <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Agents</Card.Title>
                         <p style={{ marginLeft: '80px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{agentsCount}</b></p>
                     </Card.Body>
                 </Card>
             </div>
+            
             <div style={{ display: 'flex', }}>
-                <Card style={{ width: '350px', height: '200px', left: '400px', top: '100px', borderColor: '#F58E26' }}>
+                <Card style={{ width: '350px', height: '200px', left: '400px', top: '100px', borderColor: '#F58E26' }}onClick={transporterdcount}>
                     <Card.Body>
                         <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Transporters</Card.Title>
                         <p style={{ marginLeft: '53px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{transporterCount}</b></p>
                     </Card.Body>
                 </Card>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Card style={{ width: '350px', height: '200px', left: '483px', top: '100px', borderColor: '#F58E26' }}>
+                
+                
+                <Card style={{ width: '350px', height: '200px', left: '483px', top: '100px', borderColor: '#F58E26' }}onClick={Fleetcount}>
                     <Card.Body>
                         <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Fleet Owners</Card.Title>
-
+                        <p style={{ marginLeft: '53px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{fleetownerCount}</b></p>
                     </Card.Body>
                 </Card>
             </div>

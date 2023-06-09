@@ -17,6 +17,10 @@ import Queries from "./Components/Queries";
 import PointsWithdraw from "./Components/PointsWithdraw";
 import Management from "./Components/Management";
 import Messaging from "./Components/Messaging";
+import Shippers from "./Components/Shipperscomponent";
+import Transporters from "./Components/Transportercomponent";
+import Agents from "./Components/Agentscomponent";
+import Fleetowner from "./Components/Fleetowners";
 
 
 
@@ -46,6 +50,10 @@ export default function App() {
         <Route path="/points" element={<PrivateRoutes Component={PointsWithdraw} />} />
         <Route path="/management" element={<PrivateRoutes Component={Management} />} />
         <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
+        <Route path="/shipper" element={<PrivateRoutes Component={Shippers} />} />
+        <Route path="/agent" element={<PrivateRoutes Component={Agents} />} />
+        <Route path="/transporter" element={<PrivateRoutes Component={Transporters} />} />
+        <Route path="/Fleet" element={<PrivateRoutes Component={Fleetowner} />} />
         {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
         {/* <Route path="/date" element={<Dates />} /> */}
         {/* </Route> */}

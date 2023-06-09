@@ -39,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function Users() {
+export default function Transporters() {
     const [users, setUsers] = useState([])
     const [totalusers, setTotalUsers] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
@@ -57,21 +57,17 @@ export default function Users() {
     }, [])
 
     const getUsers = async () => {
-        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
-        try {
-            if (users.data.TotalUsers !== 0) {
-                setUsers(users.data.users)
-                console.log(users.data.users)
-            } else {
-                setTotalUsers(true)
-                console.log("No users found")
-            }
+      const users = await axios  .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
+      .then(response => {
+        const shipperdata = response.data.users.filter(user => user.role === 'Transporter');
+        
+        setUsers(shipperdata)
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
-        } catch (err) {
-            console.log(err)
-        }
-
-    }
+  }
 
     const setUser = (user) => {
         localStorage.setItem('userPop', JSON.stringify(user))
@@ -222,40 +218,11 @@ export default function Users() {
                             </Table>
                         </TableContainer>
 
-                        {/* <Row xs={1} md={4} className="g-4">
-                            {searchedResult.map((user) => {
-                                const x = Role(user)
-                                const y = Verification(user)
-                                return (
-
-                                    <Col>
-
-                                        <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                            <Card.Header style={{ display: "flex" }}>
-                                                <div>
-                                                    {x ? <ImIcons.ImUser style={{ marginRight: "1px", color: "blue" }} /> : <ImIcons.ImUsers style={{ marginRight: "1px", color: "blue" }} />}
-
-                                                    <br />
-                                                </div>
-                                                <h5 style={{ marginLeft: "1rem" }}>{user.firstName} {user.lastName}</h5>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <Card.Title>{user.role}</Card.Title>
-                                                <p>PhNo:-{user.mobileNo}</p>
-                                                <Card.Text>
-                                                    GST Verification  --  {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                )
-                            })}
-                        </Row> */}
+                      
                     </div>
                 ) : (
                     <div className='container'>
-                        <h2 style={{ textAlign: "center" }}>TruKApp Users</h2>
+                        <h2 style={{ textAlign: "center" }}>Total Transporters</h2>
                         <br />
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -316,35 +283,7 @@ export default function Users() {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        {/* <Row xs={1} md={4} className="g-4">
-                            {users.map((user) => {
-                                const x = Role(user)
-                                const y = Verification(user)
-                                return (
-
-                                    <Col>
-                                        <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                            <Card.Header style={{ display: "flex" }}>
-                                                <div>
-                                                    {x ? <ImIcons.ImUser style={{ marginRight: "1px", color: "blue" }} /> : <ImIcons.ImUsers style={{ marginRight: "1px", color: "blue" }} />}
-
-                                                    <br />
-                                                </div>
-                                                <h5 style={{ marginLeft: "1rem" }}>{user.firstName} {user.lastName}</h5>
-                                            </Card.Header>
-                                            <Card.Body>
-                                                <Card.Title>{user.role}</Card.Title>
-                                                <p>PhNo:-{user.mobileNo}</p>
-                                                <Card.Text>
-                                                    GST Verification  --  {y ? <span style={{ color: "green" }}> {user.gstVerify}</span> : <span style={{ color: "red" }}> {user.gstVerify}</span>}
-                                                </Card.Text>
-                                            </Card.Body>
-                                        </Card>
-                                    </Col>
-                                )
-                            })}
-                        </Row> */}
+                        
                     </div>)}
 
             </>)

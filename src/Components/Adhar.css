@@ -9,8 +9,7 @@
 
 .bg-container{
     display: flex;
-  /* flex-direction: row; */
-  /* height: 120vh; */
+  
   
   margin-left: 250px;
 }
@@ -31,10 +30,10 @@ width: 100vw;
     border-radius: 100px;
 }
 .container2{
-    /* margin-top: 20vh; */
+   
  width: cover;
   background-color:white;
-  /* height: 100vh; */
+ 
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -42,31 +41,7 @@ width: 100vw;
   align-items: center;
   flex: 1; 
 }
-.heading{
 
-/* font-family:'Product Sans';
-font-weight: 400;
-size: 25.36px;
-font-size: 25.3617px;
-line-height: 31px;
-color: #000000;
-font-weight: 700px;
-font-size: 25.3617px;
-line-height: 31px; */
-
-
-
-
-
-font-family: 'Product Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 25.3617px;
-line-height: 31px;
-
-color: #000000;
-
-}
 .para{
     font-size: 18px;
     font-family:'Product Sans';
@@ -101,6 +76,32 @@ color: #000000;
  
     
 }
+.container3-6{
+    background-color:lightgrey;
+    width:30vw;
+    flex: 1;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh; 
+    border-radius: 8px;
+    
+ 
+    
+}
+.container3-0{
+    background-color:  rgb(207, 38, 16);;
+    width:30vw;
+    flex: 1;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5vh; 
+    border-radius: 8px;
+    
+ 
+    
+}
 .heading3{
     font-size: 15px;
     color:  rgba(91, 141, 75, 1);
@@ -108,16 +109,7 @@ color: #000000;
     margin-top: 50px;
 } */
 
-/* .container3-2{
-    background-color: rgba(91, 141, 75, 1);
-    width:30vw;
-    flex: 1;
-        height: 22vh;
-        display: flex;
-        flex-direction: row;
-        /* margin-top: 15vh; */
-        /* border-radius: 8px; */
-/* } */ */
+
 .con3-1{
     height:23px;
     width:200px;
@@ -145,6 +137,19 @@ color: #000000;
     text-align: center;
     
 }
+.con3-5{
+    height:23px;
+    width:150px;
+    border:2px;
+    font-size: 15px;
+    border-radius: 7px;
+    margin-top: 40px;
+    background-color:red;
+    color:white;
+    margin-left: 90px;
+    text-align: center;
+    
+}
 .con-2{
     height:23px;
     width:180;
@@ -160,8 +165,7 @@ color: #000000;
     
 } 
 .container3-3{
-     /* margin-top: 20px; */
-    /* position: absolute; */
+    
     padding-left: 30px; 
    background: #FFFFFF;
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

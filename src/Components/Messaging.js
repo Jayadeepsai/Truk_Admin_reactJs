@@ -73,6 +73,7 @@ else if (option === "All") {
 }
         }
     return (
+        <>
         <div style={{ marginTop: '10px', textAlign: 'right' }}>
             {/* <button > CreateMessage</button> */}
             <Button onClick={handleShow} variant="light" style={{ backgroundColor:"#F58E26" , color:"white" , margin:'2rem'}}>
@@ -124,12 +125,16 @@ else if (option === "All") {
                     <Button style={{backgroundColor:'#FFF', color:'black', marginRight:'30px'}} onClick={handleClose}>
                         Cancel
                     </Button>
-                    <Button style={{backgroundColor:'#F58E26'}} onClick={handleClose}>
+                    <Button style={{backgroundColor:'#F58E26'}} >
                         Save 
                     </Button>
                     </div>
                 {/* </Modal.Footer> */}
             </Modal>
         </div>
+        <h1>hi</h1>
+        </>
+    
+        
     )
 }
