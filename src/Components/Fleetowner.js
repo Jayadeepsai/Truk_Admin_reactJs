@@ -39,7 +39,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-export default function Agents() {
+export default function Fleetowner() {
     const [users, setUsers] = useState([])
     const [totalusers, setTotalUsers] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
@@ -59,7 +59,7 @@ export default function Agents() {
     const getUsers = async () => {
       const users = await axios  .get('https://motionless-cowboy-hat-ant.cyclic.app//admin/allUsers')
       .then(response => {
-        const shipperdata = response.data.users.filter(user => user.role === 'Agent/Broker');
+        const shipperdata = response.data.users.filter(user => user.role === 'Fleet Owner');
         
         setUsers(shipperdata)
       })
@@ -143,7 +143,7 @@ export default function Agents() {
 
         totalusers ? (
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "calc(100vh - 56px)" }}>
-                <p>No Users</p>
+                <p>No users</p>
             </div>
         ) : (
             <> <br />
@@ -222,7 +222,7 @@ export default function Agents() {
                     </div>
                 ) : (
                     <div className='container'>
-                        <h2 style={{ textAlign: "center" }}>Total Agents/Brokers</h2>
+                        <h2 style={{ textAlign: "center" }}>Total Fleet Owners</h2>
                         <br />
                         <TableContainer component={Paper}>
                             <Table sx={{ minWidth: 700 }} aria-label="customized table">

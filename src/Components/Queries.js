@@ -190,7 +190,7 @@ export default function Queries() {
                                             {/* <StyledTableCell align="right">
                                             {query.Query}
                                             </StyledTableCell> */}
-                                            <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
+                                            <StyledTableCell align="right" ><Button variant='light' style={{ backgroundColor: "#F58E26",color:"white" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
                                                 <QueriesPop
                                                     show={isClicked}
                                                     onHide={() => setIsClicked(false)} />
@@ -204,8 +204,8 @@ export default function Queries() {
                                                         <option style={{ color: "red" }} value="Pending">Pending</option>
                                                         <option style={{ color: "green" }} value="Completed">Completed</option>
                                                     </select>
-                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} style={{ slot: "end", margin: "1rem" }}>Update</Button> :
-                                                        <Button disabled style={{ slot: "end", margin: "1rem" }}>Update</Button>
+                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} variant='light' style={{ slot: "end", margin: "1rem",backgroundColor:"#F58E26",color:"white" }}>Update</Button> :
+                                                        <Button disabled variant='light' style={{ slot: "end", margin: "1rem",backgroundColor:"#F58E26",color:"white" }}>Update</Button>
                                                     }
                                                 </div>
                                             </StyledTableCell>
@@ -248,7 +248,7 @@ export default function Queries() {
                                             </StyledTableCell>
                                             <StyledTableCell align="right">{query.Name}</StyledTableCell>
                                             <StyledTableCell align="right">{query.PhoneNumber}</StyledTableCell>
-                                            <StyledTableCell align="right" ><Button variant='light' style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
+                                            <StyledTableCell align="right" ><Button variant='light' style={{ backgroundColor: "#F58E26" ,color:"white"}} ><b onClick={() => { setIsClicked(true); setQuery(query) }}>View</b></Button>
                                                 <QueriesPop
                                                     show={isClicked}
                                                     onHide={() => setIsClicked(false)} />
@@ -262,8 +262,8 @@ export default function Queries() {
                                                         <option style={{ color: "red" }} value="Pending">Pending</option>
                                                         <option style={{ color: "green" }} value="Completed">Completed</option>
                                                     </select>
-                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} style={{ slot: "end", margin: "1rem" }}>Update</Button> :
-                                                        <Button disabled style={{ slot: "end", margin: "1rem" }}>Update</Button>
+                                                    {change[idx] ? <Button onClick={() => updateStatus(propId._id)} variant='light' style={{ slot: "end", margin: "1rem",backgroundColor:"#F58E26",color:"white" }}>Update</Button> :
+                                                        <Button disabled variant='light' style={{ slot: "end", margin: "1rem",backgroundColor:"#F58E26",color:"white" }}>Update</Button>
                                                     }
                                                 </div>
                                             </StyledTableCell>

@@ -1,4 +1,3 @@
-
 import React from "react";
 
 import './Adhar.css'
@@ -89,7 +88,6 @@ const UsersPopUp = () => {
 
                             <div className={adharVerificationClass}>{User.aadharVerify}</div>
                         </div>
-                        
                         <div className={gstclass}>
                             <img src="https://img.freepik.com/premium-photo/gst-with-red-arrow-going-up_698953-12234.jpg?w=2000" className="img2" />
 
@@ -97,7 +95,7 @@ const UsersPopUp = () => {
                                 {User.gstVerify}
                             </div>
                             <div className="container3-4">
-                                <h1 className="heading3-4">Routes Operating<hr /></h1>
+                                <h4 style={{textAlign:"center"}}>Routes Operating<hr /></h4>
                                 <p className="pa">Maharashtra,Karnataka</p>
 
 

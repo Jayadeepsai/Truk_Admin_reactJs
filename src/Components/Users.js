@@ -160,7 +160,7 @@ export default function Users() {
                     />
                     <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchUsers(searchKey)} /></InputGroup.Text>
                 </InputGroup>
-                <Button onClick={extractParsedData} variant='light' style={{color:'white',backgroundColor:'#f58e26',marginLeft:'80rem'}}>Download</Button>
+                <Button onClick={extractParsedData} variant='light' style={{color:"white",backgroundColor: "#f58e26", marginLeft:"80rem"}}>Download</Button>
                 {isSearchCalled ? (
                     <div className='container'>
                         <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to users</span>
@@ -200,7 +200,7 @@ export default function Users() {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right" >
                                                     {values.map((v, idx) => (
-                                                        <Button key={idx} className="me-2 mb-2" style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' }} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
+                                                        <Button key={idx} className="me-2 mb-2" variant='light' style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' ,color:"white"}} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
                                                             View
                                                             {typeof v === 'string' && `below ${v.split('-')[0]}`}
                                                         </Button>
@@ -294,7 +294,7 @@ export default function Users() {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right" >
                                                     {values.map((v, idx) => (
-                                                        <Button key={idx} className="me-2 mb-2" style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' }} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
+                                                        <Button key={idx} className="me-2 mb-2" variant='light' style={{ backgroundColor: "#F58E26", borderColor: '#F58E2' ,color:"white"}} onClick={() => { setIsClicked(true); setUser(user); handleShow(v) }}>
                                                             View
                                                             {typeof v === 'string' && `below ${v.split('-')[0]}`}
                                                         </Button>

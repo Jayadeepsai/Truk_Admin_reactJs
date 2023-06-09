@@ -20,7 +20,7 @@ import Messaging from "./Components/Messaging";
 import Shippers from "./Components/Shipperscomponent";
 import Transporters from "./Components/Transportercomponent";
 import Agents from "./Components/Agentscomponent";
-import Fleetowner from "./Components/Fleetowners";
+import Fleetowner from "./Components/Fleetowner";
 
 
 
@@ -28,8 +28,9 @@ import Fleetowner from "./Components/Fleetowners";
 export default function App() {
 
   const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'))
+  const userInfo = JSON.parse(localStorage.getItem('adminEmail'))
 
-   //when we are in the login page due to taking false ,
+  //when we are in the login page due to taking false ,
   //we given by a different page path page is not route
   //incase of we take true page is routed
 
@@ -38,6 +39,7 @@ export default function App() {
       <HideTopNav> <Header /></HideTopNav>
       {/* <Sidebar /> */}
       {/* <MySidenav /> */}
+
 
       <Routes>
         <Route path="/home" element={<PrivateRoutes Component={Home} />} />
@@ -51,8 +53,8 @@ export default function App() {
         <Route path="/management" element={<PrivateRoutes Component={Management} />} />
         <Route path="/communication" element={<PrivateRoutes Component={Messaging} />} />
         <Route path="/shipper" element={<PrivateRoutes Component={Shippers} />} />
-        <Route path="/agent" element={<PrivateRoutes Component={Agents} />} />
         <Route path="/transporter" element={<PrivateRoutes Component={Transporters} />} />
+        <Route path="/agent" element={<PrivateRoutes Component={Agents} />} />
         <Route path="/Fleet" element={<PrivateRoutes Component={Fleetowner} />} />
         {/* <Route path="/MySidenav" element={<PrivateRoutes Component={Vehicle}/>} /> */}
         {/* <Route path="/date" element={<Dates />} /> */}

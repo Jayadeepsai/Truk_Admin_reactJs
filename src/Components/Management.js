@@ -120,7 +120,7 @@ export default function Management() {
     return (
         <>
             <Button
-                style={{ backgroundColor: '#F58E26', width: '150px', borderRadius: '10px', margin: '30px',color:"white" }}
+                style={{ backgroundColor: '#F58E26', borderRadius: '10px', margin: '30px',color:"white",marginLeft:"80rem" }}
                 variant='light'
                 onClick={handleAdd}
             >
@@ -199,7 +199,7 @@ export default function Management() {
                                     onChange={(e) => setDetails({ ...details, firstName: e.target.value })}
                                 />
                                 <br />
-                                <label>Enter Last Name</label>
+                                <label>Enter Last Name:</label>
                                 <br />
                                 <input
                                     type="text"
@@ -207,7 +207,7 @@ export default function Management() {
                                     onChange={(e) => setDetails({ ...details, lastName: e.target.value })}
                                 />
                                 <br />
-                                <label>Enter MailID</label>
+                                <label>Enter Mail:</label>
                                 <br />
                                 <input
                                     type="email"
@@ -215,7 +215,7 @@ export default function Management() {
                                     onChange={(e) => setDetails({ ...details, email: e.target.value })}
                                 />
                                 <br />
-                                <label>Enter Mobile Number</label>
+                                <label>Enter Mobile Number:</label>
                                 <br />
                                 <input
                                     type="number"
