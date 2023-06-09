@@ -51,10 +51,13 @@ export default function ActiveLoads() {
     const [searchKey, setSearchKey] = useState()
     const [searchedResult, setSearchedResult] = useState([])
     const [isSearchCalled, setIsSearchCalled] = useState(false)
+    const [filteredLoads, setFilteredLoads] = useState([]);
+    const [fromDate, setFromDate] = useState("");// These variables are used to store the selected "from" and "to" dates for filtering the loads.
+    const [toDate, setToDate] = useState("");
 
     useEffect(() => {
         getActiveLoads();
-        
+
     }, [])
 
     const getActiveLoads = async () => {
@@ -62,6 +65,7 @@ export default function ActiveLoads() {
         try {
             if (activeLoads.data.TotalLoads !== 0) {
                 setActiveLoads(activeLoads.data.loads)
+                filterLoadsByDate(activeLoads.data.loads)
                 console.log(activeLoads.data.loads)
             } else {
                 setTotalLoadsLength(true)
@@ -119,10 +123,27 @@ export default function ActiveLoads() {
     //     return itemDate >= startDate && itemDate <= endDate;
     //   });
 
+    function filterLoadsByDate(loads) {
+        if (fromDate && toDate) {
+            const filteredLoads = loads.filter((load) => {
+                const loadDate = new Date(load.date);
+                const fromDateObj = new Date(fromDate);
+                const toDateObj = new Date(toDate);
+                return loadDate >= fromDateObj && loadDate <= toDateObj;
+            });
+            setFilteredLoads(filteredLoads);
+        } else {
+            setFilteredLoads(loads);
+        }
+    }
+
+    function handleFilterClick() {
+        filterLoadsByDate(activeLoads);
+    }
+
 
 
     return (
-
 
 
         totalLoadsLength ? (
@@ -134,23 +155,41 @@ export default function ActiveLoads() {
             <>
                 {/* <Dates filteringData={activeLoads} /> */}
                 <br />
-                <InputGroup className="mb-3" style={{ width: "20rem", margin: "auto" }}>
-                    <Form.Control
-                        placeholder="Search anything..."
-                        value={searchKey}
-                        onChange={(e) => setSearchKey(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
-                    <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchLoads(searchKey)} /></InputGroup.Text>
-                </InputGroup>
+                <div >
+                    <InputGroup className="mb-3" style={{ width: "20rem", margin: "auto" }}>
+                        <Form.Control
+                            placeholder="Search anything..."
+                            value={searchKey}
+                            onChange={(e) => setSearchKey(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchLoads(searchKey)} /></InputGroup.Text>
+                    </InputGroup>
+                    <InputGroup className="mb-3" style={{ width: "25rem", marginLeft: '130px' }}>
+                        {/* <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>From:</InputGroup.Text> */}
+                        <Form.Control
+
+                            type="date"
+                            value={fromDate}
+                            onChange={(e) => setFromDate(e.target.value)}
+                        />
+                        <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>To:</InputGroup.Text>
+                        <Form.Control
+                            type="date"
+                            value={toDate}
+                            onChange={(e) => setToDate(e.target.value)}
+                        />
+                        <Button variant="light" style={{ backgroundColor: '#f58e26' }} onClick={handleFilterClick}>Filter</Button>
+                    </InputGroup>
+                </div>
                 {isSearchCalled ? (<div className='container'>
                     <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to Posted Loads</span>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
-                                <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Load Status</b></StyledTableCell>
@@ -158,7 +197,7 @@ export default function ActiveLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {searchedResult.map((load,idx) => {
+                                {searchedResult.map((load, idx) => {
                                     const status = Status(load)
                                     const sNo = idx + 1
                                     return (
@@ -175,9 +214,9 @@ export default function ActiveLoads() {
                                                 {status ? <span style={{ color: "green" }}> {load.isActive}</span> : <span style={{ color: "blue" }}> {load.isActive}</span>}
                                             </StyledTableCell>
                                             <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} ><b onClick={() => { setIsClicked(true); setLoad(load) }}>View</b></Button>
-                                            <ActiveLoadsPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
+                                                <ActiveLoadsPopUp
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
                                         </StyledTableRow>
                                     )
@@ -193,7 +232,7 @@ export default function ActiveLoads() {
                         <Table sx={{ minWidth: 700 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
+                                    <StyledTableCell style={{ fontSize: "20px" }}><b>S.No</b></StyledTableCell>
                                     <StyledTableCell style={{ fontSize: "20px" }}><b>Load Id</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                     <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>No.of Loads</b></StyledTableCell>
@@ -202,9 +241,9 @@ export default function ActiveLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {activeLoads.map((load,idx) => {
+                                {filteredLoads.map((load, idx) => {
                                     const status = Status(load)
-                                    const sNo = idx +1
+                                    const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={load.name}>
                                             <StyledTableCell component="th" scope="row">
@@ -219,11 +258,11 @@ export default function ActiveLoads() {
                                                 {status ? <span style={{ color: "green" }}> {load.isActive}</span> : <span style={{ color: "blue" }}> {load.isActive}</span>}
                                             </StyledTableCell>
                                             <StyledTableCell align="right" ><Button style={{ backgroundColor: "#F58E26" }} onClick={() => { setIsClicked(true); setLoad(load) }}><b >View</b></Button>
-                                            <ActiveLoadsPopUp 
-                                            show={isClicked}
-                                            onHide={() => setIsClicked(false)}/>
+                                                <ActiveLoadsPopUp
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
                                             </StyledTableCell>
-                                            
+
                                         </StyledTableRow>
                                     )
                                 })}
