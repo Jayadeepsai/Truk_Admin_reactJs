@@ -153,33 +153,33 @@ export default function Messaging() {
                 Create Message
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Create Message</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Create Message</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Form>
+                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                            <Form.Control
-                                type="text"
-                                placeholder="Title"
-                                autoFocus
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Title"
+                                    autoFocus
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                />
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="exampleForm.ControlTextarea1"
+                            >
 
-                            <Form.Control as="textarea" value={desc} onChange={(e) => setDesc(e.target.value)} rows={3} placeholder="Description/Message" />
-                        </Form.Group>
-                        <Form.Group
-                            className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
-                        >
+                                <Form.Control as="textarea" value={desc} onChange={(e) => setDesc(e.target.value)} rows={3} placeholder="Description/Message" />
+                            </Form.Group>
+                            <Form.Group
+                                className="mb-3"
+                                controlId="exampleForm.ControlTextarea1"
+                            >
 
                             <select value={toValue} style={{ width: '30.5vw', height: "40px", borderRadius: '10px' }} onChange={(e) => getdata(e.target.value)} >
                                 <option selected> Send to</option>
