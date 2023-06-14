@@ -299,10 +299,10 @@ export default function ActiveLoads() {
     const getActiveLoads = async () => {
         const activeLoadsResponse = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allPostedLoads");
         try {
-            if (activeLoads.data.TotalLoads !== 0) {
-                setActiveLoads(activeLoads.data.loads)
-                filterLoadsByDate(activeLoads.data.loads)
-                console.log(activeLoads.data.loads)
+            if (activeLoadsResponse.data.TotalLoads !== 0) {
+                setActiveLoads(activeLoadsResponse.data.loads)
+                filterLoadsByDate(activeLoadsResponse.data.loads)
+                console.log(activeLoadsResponse.data.loads)
             } else {
                 setTotalLoadsLength(true);
                 console.log("No loads are posted.");
