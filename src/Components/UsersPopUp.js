@@ -19,10 +19,10 @@ const UsersPopUp = () => {
     let containerclass;
     if (User.aadharVerify === 'Verified') {
         adharVerificationClass = 'con3-2'
-        containerclass= 'container3-1'
+        containerclass = 'container3-1'
     } else if (User.aadharVerify === 'notVerified') {
         adharVerificationClass = 'con3-5';
-        containerclass='container3-6'
+        containerclass = 'container3-6'
     }
 
 
@@ -30,10 +30,10 @@ const UsersPopUp = () => {
     let gstclass;
     if (User.gstVerify === 'Verified') {
         gstverificationclass = 'con3-2'
-        gstclass= 'container3-1'
+        gstclass = 'container3-1'
     } else if (User.gstVerify === 'notVerified') {
-        gstverificationclass= 'con3-5';
-        gstclass='container3-6'
+        gstverificationclass = 'con3-5';
+        gstclass = 'container3-6'
     }
 
 
@@ -41,7 +41,7 @@ const UsersPopUp = () => {
 
 
 
-    
+
     return (
         <div>
             {/* <div className="orange"></div> */}
@@ -95,8 +95,14 @@ const UsersPopUp = () => {
                                 {User.gstVerify}
                             </div>
                             <div className="container3-4">
-                                <h4 style={{textAlign:"center"}}>Routes Operating<hr /></h4>
-                                <p className="pa">Maharashtra,Karnataka</p>
+                                <h4 style={{ textAlign: "center" }}>Routes Operating<hr /></h4>
+                                {User.routes.length > 0 ? (
+                                    User.routes.map((route) => {
+                                        return <p className="pa">{route}</p>
+                                    })
+                                ) : (<>No Operating Routes</>)}
+
+
 
 
                             </div>
@@ -111,7 +117,7 @@ const UsersPopUp = () => {
 
 
             </div>
-        </div>
+        </div >
     )
 }
 export default UsersPopUp;

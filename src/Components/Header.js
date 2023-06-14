@@ -149,6 +149,7 @@ export default function Header() {
 
             <Nav>
               <Nav className="me-auto">
+              <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
                 {/* <NavDropdown title={
                   <span style={{ color: "white" }}>Loads</span>
                 } id="basic-nav-dropdown">
@@ -166,13 +167,13 @@ export default function Header() {
                   <span style={{ color: "white" }}>Users</span>
                 } id="basic-nav-dropdown">
                   <NavDropdown.Item href="/users">TruKApp Users</NavDropdown.Item>
-                  <NavDropdown.Item href="/management">User Management</NavDropdown.Item>
+                 
 
                 </NavDropdown>
                 {/* <Nav.Link href="/users" style={{ color: "#ffff" }}>Users</Nav.Link> */}
                 {/* <Nav.Link href="/date" style={{ color: "#ffff" }}>Date</Nav.Link> */}
                 <Nav.Link href="/vehicles" style={{ color: "#ffff" }}>Vehicles</Nav.Link>
-                <Nav.Link href="/communication" style={{ color: "#ffff" }}>Communication</Nav.Link>
+                
                 <Nav.Link href="/queries" style={{ color: "#ffff" }}>Support</Nav.Link>
                 <Button onClick={handleLogout} variant="light" style={{ backgroundColor: "#f58e26", color: "white" }}>
                   Logout

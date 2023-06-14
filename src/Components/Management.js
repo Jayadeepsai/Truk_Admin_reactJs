@@ -101,7 +101,7 @@ export default function Management() {
             mobileNo: details.mobileNo,
             email: details.email,
             password: details.password
-          
+
         };
 
         axios.put('https://motionless-cowboy-hat-ant.cyclic.app/admin/update/' + details._id, body)
@@ -119,63 +119,65 @@ export default function Management() {
 
     return (
         <>
+
             <Button
-                style={{ backgroundColor: '#F58E26', borderRadius: '10px', margin: '30px',color:"white",marginLeft:"80rem" }}
+                style={{ backgroundColor: '#F58E26', borderRadius: '10px', margin: '30px', color: "white", marginLeft: "80rem" }}
                 variant='light'
                 onClick={handleAdd}
             >
                 + Add Analyst
             </Button>
+            <h2 style={{ textAlign: "center" }}>User Management</h2>
             <Editprofile show={addPopUpShow} onHide={() => setAddPopUpShow(false)} />
             <div className='container'>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow style={{ paddingLeft: '10px' }}>
-                            <StyledTableCell style={{ fontSize: '20px' }}>S.No&nbsp;</StyledTableCell>
-                            <StyledTableCell style={{ fontSize: '20px' }}>Name&nbsp;</StyledTableCell>
-                            <StyledTableCell style={{ fontSize: '20px' }}>Email&nbsp;</StyledTableCell>
-                            <StyledTableCell style={{ fontSize: '20px' }}>Mobile Number&nbsp;</StyledTableCell>
-                            <StyledTableCell style={{ fontSize: '20px' }}>Role&nbsp;</StyledTableCell>
-                            <StyledTableCell style={{ fontSize: '20px' }}>Actions&nbsp;</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {data.map((row, index) => (
-                            <StyledTableRow key={row.id}>
-                                <StyledTableCell component="th" scope="row">
-                                    {index + 1}
-                                </StyledTableCell>
-                                <StyledTableCell component="th" scope="row">
-                                    {row.firstName} {row.lastName}
-                                </StyledTableCell>
-                                <StyledTableCell>{row.email}</StyledTableCell>
-                                <StyledTableCell>{row.mobileNo}</StyledTableCell>
-                                <StyledTableCell>{row.role}</StyledTableCell>
-                                <StyledTableCell>
-                                    <div>
-                                        <Button
-                                            style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', margin: '20px', color:"white" }}
-                                            variant='light'
-                                            onClick={() => handleEdit(row)}
-                                        >
-                                            Edit
-                                        </Button>
-                                        <Button
-                                            className="me-2 mb-2"
-                                            style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', marginTop: '7px', color:"white"  }}
-                                            variant='light'
-                                            onClick={() => deleteHandler(row._id)}
-                                        >
-                                            Delete
-                                        </Button>
-                                    </div>
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                        <TableHead>
+                            <TableRow style={{ paddingLeft: '10px' }}>
+                                <StyledTableCell style={{ fontSize: '20px' }}>S.No&nbsp;</StyledTableCell>
+                                <StyledTableCell style={{ fontSize: '20px' }}>Name&nbsp;</StyledTableCell>
+                                <StyledTableCell style={{ fontSize: '20px' }}>Email&nbsp;</StyledTableCell>
+                                <StyledTableCell style={{ fontSize: '20px' }}>Mobile Number&nbsp;</StyledTableCell>
+                                <StyledTableCell style={{ fontSize: '20px' }}>Role&nbsp;</StyledTableCell>
+                                <StyledTableCell style={{ fontSize: '20px' }}>Actions&nbsp;</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map((row, index) => (
+                                <StyledTableRow key={row.id}>
+                                    <StyledTableCell component="th" scope="row">
+                                        {index + 1}
+                                    </StyledTableCell>
+                                    <StyledTableCell component="th" scope="row">
+                                        {row.firstName} {row.lastName}
+                                    </StyledTableCell>
+                                    <StyledTableCell>{row.email}</StyledTableCell>
+                                    <StyledTableCell>{row.mobileNo}</StyledTableCell>
+                                    <StyledTableCell>{row.role}</StyledTableCell>
+                                    <StyledTableCell>
+                                        <div>
+                                            <Button
+                                                style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', margin: '20px', color: "white" }}
+                                                variant='light'
+                                                onClick={() => handleEdit(row)}
+                                            >
+                                                Edit
+                                            </Button>
+                                            <Button
+                                                className="me-2 mb-2"
+                                                style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', marginTop: '7px', color: "white" }}
+                                                variant='light'
+                                                onClick={() => deleteHandler(row._id)}
+                                            >
+                                                Delete
+                                            </Button>
+                                        </div>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </div>
             {details && (
                 <Modal
@@ -225,8 +227,8 @@ export default function Management() {
                                 <br />
                                 <br />
                                 <Button
-                                   style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', marginTop: '7px', color:"white" ,alignItems:"right" }}
-                                   variant='light'
+                                    style={{ backgroundColor: '#F58E26', borderColor: '#F58E2', marginTop: '7px', color: "white", alignItems: "right" }}
+                                    variant='light'
                                     onClick={handleUpdate}
                                 >
                                     Update

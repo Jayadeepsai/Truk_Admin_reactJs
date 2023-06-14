@@ -42,6 +42,9 @@ export default function PointsWithdraw() {
     const [totalusers, setTotalUsers] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
     const [dropValue, setDropValue] = useState()
+    const [queryStatus, setQueryStatus] = useState({ idx: 0 })
+    const [change, setChange] = useState({ idx: false })
+    const [update, setUpdate] = useState()
 
     //search users use state
 
@@ -52,7 +55,7 @@ export default function PointsWithdraw() {
     useEffect(() => {
         getUsers();
 
-    }, [])
+    }, [update])
 
     const getUsers = async () => {
         const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
@@ -70,6 +73,33 @@ export default function PointsWithdraw() {
         }
 
     }
+
+    const handleChange = (idx, e) => {
+        setQueryStatus({ [idx]: e.target.value })
+    }
+
+
+    const handleUpdateButton = (idx) => {
+        setChange({ [idx]: true })
+    }
+
+
+    const updateStatus = async (id) => {
+        const arr = Object.values(queryStatus)
+        const body = {
+            withdrawStatus: arr[0]
+        }
+        const updatedResult = await axios.put("https://motionless-cowboy-hat-ant.cyclic.app/admin/userWithdrawStatus/" + id, body)
+        try {
+            console.log("Query Status has been updated.")
+            console.log(updatedResult.data.updatedProduct)
+            setUpdate(Math.random())
+        } catch (err) {
+            console.log("Error")
+        }
+
+    }
+
 
     const searchUsers = async (key) => {
         console.log(key)
@@ -123,6 +153,7 @@ export default function PointsWithdraw() {
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Account</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
                                         {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell> */}
@@ -142,6 +173,7 @@ export default function PointsWithdraw() {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
+                                                <StyledTableCell align="right">{user.withdrawStatus}</StyledTableCell>
                                                 {/* <StyledTableCell align="right">
                                                     {y ? <span style={{ color: "green" }}> <b>{user.gstVerify}</b></span> : <span style={{ color: "red" }}><b>{user.gstVerify}</b> </span>}
                                                 </StyledTableCell>
@@ -174,6 +206,8 @@ export default function PointsWithdraw() {
                                         <StyledTableCell style={{ fontSize: "20px" }}><b>User Name</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Account</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Change Status</b></StyledTableCell>
                                         {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell> */}
@@ -182,7 +216,7 @@ export default function PointsWithdraw() {
                                 </TableHead>
                                 <TableBody>
                                     {users.map((user, idx) => {
-
+                                        // console.log(user)
                                         const sNo = idx + 1
                                         return (
                                             <StyledTableRow key={user.name}>
@@ -194,6 +228,21 @@ export default function PointsWithdraw() {
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
                                                 <StyledTableCell align="right">{user.role}</StyledTableCell>
+                                                <StyledTableCell align="right">{user.withdrawStatus}</StyledTableCell>
+                                                <StyledTableCell align="right">
+                                                    <div>
+                                                        <select value={queryStatus.idx} onChange={(e) => (handleChange(idx, e), handleUpdateButton(idx))} style={{ width: '6rem', height: '2rem', borderRadius: '5px' }}>
+                                                            <option >Select</option>
+                                                            <option style={{ color: "red" }} value="Pending">Pending</option>
+                                                            <option style={{ color: "green" }} value="Completed">Completed</option>
+                                                        </select>
+                                                        {change[idx] ? <Button onClick={() => updateStatus(user._id)} variant='light' style={{ slot: "end", margin: "1rem", backgroundColor: "#F58E26", color: "white" }}>Update</Button> :
+                                                            <Button disabled variant='light' style={{ slot: "end", margin: "1rem", backgroundColor: "#F58E26", color: "white" }}>Update</Button>
+                                                        }
+
+
+                                                    </div>
+                                                </StyledTableCell>
                                                 {/* <StyledTableCell align="right">
                                                     {y ? <span style={{ color: "green" }}> <b>{user.gstVerify}</b></span> : <span style={{ color: "red" }}><b>{user.gstVerify}</b> </span>}
                                                 </StyledTableCell>

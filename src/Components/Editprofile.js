@@ -71,10 +71,11 @@ const Editprofile = (props, getdetails) => {
 
                            
                         </form>
-                        <button
-                                style={{ marginLeft: '250px', width: '80px', borderRadius: '20px', backgroundColor: '#F58E26', marginBottom: '30px', color: "white" }}
+                        <Button
+                        variant="light"
+                                style={{ marginLeft: '300px', width: '80px', borderRadius: '20px', backgroundColor: '#F58E26', marginBottom: '30px', color: "white" }}
                                 onClick={(e) => Createhandler(e)}
-                            >Create</button>
+                            >Create</Button>
                     </div>
 
                 </Modal.Body>

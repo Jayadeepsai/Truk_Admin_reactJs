@@ -190,8 +190,8 @@ export default function Messaging() {
                                 <option value="FleetOwner">FleetOwner</option>
 
                             </select>
-                            <h6 style={{ marginTop: '10px' }}>Notification/Frequency</h6>
-                            <Form.Control type="date" style={{ padding: '10px', width: '150px' }} />
+                            {/* <h6 style={{ marginTop: '10px' }}>Notification/Frequency</h6>
+                            <Form.Control type="date" style={{ padding: '10px', width: '150px' }} /> */}
                         </Form.Group>
                     </Form>
                 </Modal.Body>
