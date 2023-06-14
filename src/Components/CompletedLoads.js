@@ -41,14 +41,15 @@ export default function CompletedLoads() {
     const [activeLoads, setActiveLoads] = useState([])
     const [totalLoadsLength, setTotalLoadsLength] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
-
+    const [filteredLoads, setFilteredLoads] = useState([]);
     //search users use state
 
     const [searchKey, setSearchKey] = useState()
     const [message, setMessage] = useState(null);
     const [searchedResult, setSearchedResult] = useState([])
     const [isSearchCalled, setIsSearchCalled] = useState(false)
-
+    const [fromDate, setFromDate] = useState("");// These variables are used to store the selected "from" and "to" dates for filtering the loads.
+    const [toDate, setToDate] = useState("");
     useEffect(() => {
         getActiveLoads();
     }, [])
@@ -58,6 +59,7 @@ export default function CompletedLoads() {
         try {
             if (activeLoads.data.TotalLoads !== 0) {
                 setActiveLoads(activeLoads.data.load)
+                filterloadsbydata(activeLoads.data.load)
             } else {
                 setTotalLoadsLength(true)
                 console.log("No loads are completed")
@@ -100,7 +102,27 @@ export default function CompletedLoads() {
             searchCompleteLoads(searchKey);
         }
     }
+   
+    function filterloadsbydata(loads){
+        function filterLoadsByDate(loads) {
+            if (fromDate && toDate) {
+                const filteredLoads = loads.filter((load) => {
+                    const loadDate = new Date(load.date);
+                    const fromDateObj = new Date(fromDate);
+                    const toDateObj = new Date(toDate);
+                    return loadDate >= fromDateObj && loadDate <= toDateObj;
+                });
+                setFilteredLoads(filteredLoads);
+            } else {
+                setFilteredLoads(loads);
+            }
+        }
+        filterLoadsByDate(loads)
+    }
 
+    function handleFilterClick(){
+        filterloadsbydata(activeLoads)
+    }
 
     return (
 
@@ -111,7 +133,18 @@ export default function CompletedLoads() {
         ) : (
             <>
                 <br />
-                <InputGroup className="mb-3" style={{ width: "20rem", margin: "auto" }}>
+                {/* <InputGroup className="mb-3" style={{ width: "20rem", margin: "auto" }}>
+                    <Form.Control
+                        placeholder="Search anything..."
+                        value={searchKey}
+                        onChange={(e) => setSearchKey(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
+                    <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchCompleteLoads(searchKey)} /></InputGroup.Text>
+                </InputGroup> */}
+                  
+                  <div style={{display:'flex'}} >
+                  <InputGroup className="mb-3" style={{ width: "25rem", margin: "auto" }}>
                     <Form.Control
                         placeholder="Search anything..."
                         value={searchKey}
@@ -120,6 +153,24 @@ export default function CompletedLoads() {
                     />
                     <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchCompleteLoads(searchKey)} /></InputGroup.Text>
                 </InputGroup>
+                <InputGroup className="mb-3" style={{ width: "30rem",marginLeft:'110px'  }}>
+                    {/* <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>From:</InputGroup.Text> */}
+                    <Form.Control
+                        type="date"
+                        value={fromDate}
+                        onChange={(e) => setFromDate(e.target.value)}
+                    />
+                    <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>To:</InputGroup.Text>
+                    <Form.Control 
+                        type="date"
+                        value={toDate}
+                        onChange={(e) => setToDate(e.target.value)}
+                    />
+                    <Button variant="light" style={{backgroundColor:'#f58e26'}} onClick={handleFilterClick}>Filter</Button>
+                </InputGroup>
+                </div>
+
+
 
                 {isSearchCalled ? (<div className='container'>
                     <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to Completed Loads</span>
@@ -162,38 +213,7 @@ export default function CompletedLoads() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    {/* <h2 style={{ textAlign: "center" }}>{message}</h2> */}
-                    {/* <Row xs={1} md={4} className="g-4">
-                        {searchedResult.map((load) => {
-                            return (
-                                <Col>
-                                    <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                        <Card.Header style={{ display: "flex" }}>
-                                            <div>
-                                                <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "blue" }} />{load.OriginLocation}
-                                                <br />
-
-                                                <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "red" }} /> {load.DestinationLocation}
-                                            </div>
-                                            <img src='https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=' style={{ height: "20%", width: "20%" }} />
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Card.Title>PhNo:-{load.Number}</Card.Title>
-                                            <Card.Text><b>Products:</b>
-                                                {load.product.map((name) => {
-                                                    return <p style={{ display: "inline-block" }}>{name},</p>
-                                                })}
-                                                <div style={{ display: "flex" }}>
-                                                    Status -- <div style={{ color: "green", marginLeft: "0.2rem" }}>{load.isActive}</div>
-                                                </div>
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            )
-                        })}
-                    </Row> */}
+                    
                 </div>) : (<div className='container'>
                     <h2 style={{ textAlign: "center" }}>Completed Loads</h2>
                     <br />
@@ -210,7 +230,7 @@ export default function CompletedLoads() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {activeLoads.map((load, idx) => {
+                                {filteredLoads.map((load, idx) => {
                                     const sNo = idx + 1
                                     return (
                                         <StyledTableRow key={load.name}>
@@ -236,37 +256,7 @@ export default function CompletedLoads() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    {/* <Row xs={1} md={4} className="g-4">
-                        {activeLoads.map((load) => {
-                            return (
-                                <Col>
-                                    <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem" }}>
-
-                                        <Card.Header style={{ display: "flex" }}>
-                                            <div>
-                                                <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "blue" }} />{load.OriginLocation}
-                                                <br />
-
-                                                <ImIcons.ImLocation2 style={{ marginRight: "1px", color: "red" }} /> {load.DestinationLocation}
-                                            </div>
-                                            <img src='https://media.istockphoto.com/id/1150981488/vector/brown-paper-box.jpg?b=1&s=170667a&w=0&k=20&c=ExZoHBgVStsXWmQiQw4hVlN-EvhEec-QrqhpXiym2og=' style={{ height: "20%", width: "20%" }} />
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Card.Title>PhNo:-{load.Number}</Card.Title>
-                                            <Card.Text><b>Products:</b>
-                                                {load.product.map((name) => {
-                                                    return <p style={{ display: "inline-block" }}>{name},</p>
-                                                })}
-                                                <div style={{ display: "flex" }}>
-                                                    Status -- <div style={{ color: "green", marginLeft: "0.2rem" }}>{load.isActive}</div>
-                                                </div>
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            )
-                        })}
-                    </Row> */}
+                    
                 </div>)}
 
 
@@ -274,3 +264,5 @@ export default function CompletedLoads() {
 
     )
 }
+
+

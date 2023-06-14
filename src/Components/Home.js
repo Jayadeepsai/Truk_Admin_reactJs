@@ -78,6 +78,16 @@ export default function Home(props) {
         }
 
     }
+    const getfleetowners = async () => {
+        const Fleetowner = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Fleet Owner")
+        try {
+            if (Fleetowner.data.TotalUsers !== 0) {
+                setfleetowner(Fleetowner.data.users)
+                setfleetownerCount(Fleetowner.data.TotalUsers)
+            } else {
+
+                console.log("No Transporters registered")
+            }
 
     const getFleetOwners = async () => {
         const FleetOwners = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersFilterForShipper/Fleet Owner")
@@ -111,7 +121,20 @@ export default function Home(props) {
         navigate('/Fleet')
     }
 
+    }
+ const shipperscount =() =>{
+    navigate('/shipper')
+ }
+ const agentsscount =() =>{
+    navigate('/agent')
+ }
+const transporterdcount=()=>{
+    navigate('/transporter')
+}
 
+const Fleetcount =()=>{
+    navigate('/Fleet')
+}
     return (
         <>
             <br />
@@ -135,6 +158,7 @@ export default function Home(props) {
                     </Card.Body>
                 </Card>
             </div>
+            
             <div style={{ display: 'flex', }}>
                 <Card style={{ width: '350px', height: '200px', left: '400px', top: '100px', borderColor: '#F58E26' }} onClick={transportersCount}>
                     <Card.Body>
