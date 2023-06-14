@@ -48,7 +48,7 @@ export default function Header() {
     profileData.length > 0 ? profileData[0].role === 'Admin' ? (<>
       <Navbar expand="lg" style={{ backgroundColor: "#f58e26" }}>
         <Container fluid>
-          <img src='trukpng.png' style={{ height: "2rem", width: "2rem", marginRight: "1rem " }} />
+          <img src='ellipse truk logo.png' style={{ height: "2rem", width: "2rem", marginRight: "1rem " }} />
 
           <Navbar.Brand href="">TruKApp</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />

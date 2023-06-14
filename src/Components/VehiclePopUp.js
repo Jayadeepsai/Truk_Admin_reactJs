@@ -32,20 +32,7 @@ export default function VehiclePopUp(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {/* <h4>{Truk.OriginLocation}</h4>
-                <div>
-                    {Truk.trukOwnerNumber},
-                    {isValid ? (<>
-                        {Truk.trukoperatingRoutes.map((route) => {
-                            return <p style={{ display: "inline-block" }}>{route},</p>
-                        })}
-                    </>
-                    ) : null}
-
-                    {Truk.trukdate}
-                    Status -- {Truk.trukisActive}
-
-                </div> */}
+                
                 <Col>
 
                     <Card style={{ width: '19rem', borderBlockColor: '#f58e26', margin: "2rem", height: "13rem", overflow: "hidden", textOverflow: "ellipsis" }}>
@@ -65,11 +52,7 @@ export default function VehiclePopUp(props) {
                                 <div style={{ display: "flex" }}>
                                     Truk status -- <div style={{ color: "green", marginLeft: "0.2rem" }}>{Truk.trukisActive}</div>
                                 </div>
-                                {/* <Button style={{ backgroundColor: "#f58e26", marginLeft: "13rem", marginTop: "-3rem" }} onClick={() => { setIsClicked(true); setTruk(vehicle) }} >View</Button>
-                                <VehiclePopUp
-                                    show={isClicked}
-                                    onHide={() => setIsClicked(false)}
-                                /> */}
+                                
                             </Card.Text>
                         </Card.Body>
 

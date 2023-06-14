@@ -2,15 +2,7 @@ import React from "react";
 
 import './Adhar.css'
 const UsersPopUp = () => {
-    const Adress = {
-        AdressType: 'Office',
-        doorNo: '44-1-9',
-        street: "Dharavari Street",
-        landmark: 'sivalayam temple',
-        city: 'Ongole',
-        Pincode: '523105'
-
-    }
+    
     const user = localStorage.getItem('userPop')
     const User = JSON.parse(user)
     console.log(User)

@@ -15,6 +15,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from "react-bootstrap";
+import PointsPop from './PointsPop';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -73,6 +74,10 @@ export default function PointsWithdraw() {
         }
 
     }
+
+    const setAcc = (acc) => {
+        localStorage.setItem('accPop', JSON.stringify(acc));
+    };
 
     const handleChange = (idx, e) => {
         setQueryStatus({ [idx]: e.target.value })
@@ -154,6 +159,7 @@ export default function PointsWithdraw() {
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Refferal Code</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Account</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Status</b></StyledTableCell>
+                                        <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Change Status</b></StyledTableCell>
                                         {/* <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>GST verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>Aadhar verification</b></StyledTableCell>
                                         <StyledTableCell align="right" style={{ fontSize: "20px" }}><b>More Details</b></StyledTableCell> */}
@@ -163,6 +169,7 @@ export default function PointsWithdraw() {
                                     {searchedResult.map((user, idx) => {
 
                                         const sNo = idx + 1
+                                        const withStat = user.withdrawStatus
                                         return (
                                             <StyledTableRow key={user.name}>
                                                 <StyledTableCell component="th" scope="row">
@@ -172,8 +179,26 @@ export default function PointsWithdraw() {
                                                     {user.firstName}{user.lastName}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
-                                                <StyledTableCell align="right">{user.role}</StyledTableCell>
-                                                <StyledTableCell align="right">{user.withdrawStatus}</StyledTableCell>
+                                                <StyledTableCell align="right"><Button variant='light' style={{color:"white",backgroundColor:"#F58E26"}} onClick={() => { setIsClicked(true); setAcc(user)}}>View</Button>
+                                                <PointsPop
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
+                                                </StyledTableCell>
+                                                <StyledTableCell align="right" style={{ color: withStat === "Completed" ? "green" : "red" }}><b>{user.withdrawStatus}</b></StyledTableCell>
+                                                <StyledTableCell align="right">
+                                                    <div>
+                                                        <select value={queryStatus.idx} onChange={(e) => (handleChange(idx, e), handleUpdateButton(idx))} style={{ width: '6rem', height: '2rem', borderRadius: '5px' }}>
+                                                            <option >Select</option>
+                                                            <option style={{ color: "red" }} value="Pending">Pending</option>
+                                                            <option style={{ color: "green" }} value="Completed">Completed</option>
+                                                        </select>
+                                                        {change[idx] ? <Button onClick={() => updateStatus(user._id)} variant='light' style={{ slot: "end", margin: "1rem", backgroundColor: "#F58E26", color: "white" }}>Update</Button> :
+                                                            <Button disabled variant='light' style={{ slot: "end", margin: "1rem", backgroundColor: "#F58E26", color: "white" }}>Update</Button>
+                                                        }
+
+
+                                                    </div>
+                                                </StyledTableCell>
                                                 {/* <StyledTableCell align="right">
                                                     {y ? <span style={{ color: "green" }}> <b>{user.gstVerify}</b></span> : <span style={{ color: "red" }}><b>{user.gstVerify}</b> </span>}
                                                 </StyledTableCell>
@@ -218,6 +243,7 @@ export default function PointsWithdraw() {
                                     {users.map((user, idx) => {
                                         // console.log(user)
                                         const sNo = idx + 1
+                                        const withStat = user.withdrawStatus
                                         return (
                                             <StyledTableRow key={user.name}>
                                                 <StyledTableCell component="th" scope="row">
@@ -227,8 +253,12 @@ export default function PointsWithdraw() {
                                                     {user.firstName}{user.lastName}
                                                 </StyledTableCell>
                                                 <StyledTableCell align="right">{user.referalCode}</StyledTableCell>
-                                                <StyledTableCell align="right">{user.role}</StyledTableCell>
-                                                <StyledTableCell align="right">{user.withdrawStatus}</StyledTableCell>
+                                                <StyledTableCell align="right"><Button variant='light' style={{color:"white",backgroundColor:"#F58E26"}} onClick={() => { setIsClicked(true); setAcc(user)}}>View</Button>
+                                                <PointsPop
+                                                    show={isClicked}
+                                                    onHide={() => setIsClicked(false)} />
+                                                </StyledTableCell>
+                                                <StyledTableCell align="right" style={{ color: withStat === "Completed" ? "green" : "red" }}><b>{user.withdrawStatus}</b></StyledTableCell>
                                                 <StyledTableCell align="right">
                                                     <div>
                                                         <select value={queryStatus.idx} onChange={(e) => (handleChange(idx, e), handleUpdateButton(idx))} style={{ width: '6rem', height: '2rem', borderRadius: '5px' }}>
