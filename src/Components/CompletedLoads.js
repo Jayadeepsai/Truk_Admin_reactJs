@@ -102,8 +102,8 @@ export default function CompletedLoads() {
             searchCompleteLoads(searchKey);
         }
     }
-   
-    function filterloadsbydata(loads){
+
+    function filterloadsbydata(loads) {
         function filterLoadsByDate(loads) {
             if (fromDate && toDate) {
                 const filteredLoads = loads.filter((load) => {
@@ -120,7 +120,7 @@ export default function CompletedLoads() {
         filterLoadsByDate(loads)
     }
 
-    function handleFilterClick(){
+    function handleFilterClick() {
         filterloadsbydata(activeLoads)
     }
 
@@ -142,32 +142,32 @@ export default function CompletedLoads() {
                     />
                     <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchCompleteLoads(searchKey)} /></InputGroup.Text>
                 </InputGroup> */}
-                  
-                  <div style={{display:'flex'}} >
-                  <InputGroup className="mb-3" style={{ width: "25rem", margin: "auto" }}>
-                    <Form.Control
-                        placeholder="Search anything..."
-                        value={searchKey}
-                        onChange={(e) => setSearchKey(e.target.value)}
-                        onKeyDown={handleKeyDown}
-                    />
-                    <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchCompleteLoads(searchKey)} /></InputGroup.Text>
-                </InputGroup>
-                <InputGroup className="mb-3" style={{ width: "30rem",marginLeft:'110px'  }}>
-                    {/* <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>From:</InputGroup.Text> */}
-                    <Form.Control
-                        type="date"
-                        value={fromDate}
-                        onChange={(e) => setFromDate(e.target.value)}
-                    />
-                    <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>To:</InputGroup.Text>
-                    <Form.Control 
-                        type="date"
-                        value={toDate}
-                        onChange={(e) => setToDate(e.target.value)}
-                    />
-                    <Button variant="light" style={{backgroundColor:'#f58e26'}} onClick={handleFilterClick}>Filter</Button>
-                </InputGroup>
+
+                <div style={{ display: 'flex' , justifyContent:'space-between'}} >
+                    <InputGroup className="mb-3" style={{ width: "20rem", float:'left', marginLeft:'55px' }}>
+                        <Form.Control
+                            placeholder="Search anything..."
+                            value={searchKey}
+                            onChange={(e) => setSearchKey(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchCompleteLoads(searchKey)} /></InputGroup.Text>
+                    </InputGroup>
+                    <InputGroup className="mb-3" style={{ width: "25rem",float:'right', marginRight:'55px' }}>
+                        {/* <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>From:</InputGroup.Text> */}
+                        <Form.Control
+                            type="date"
+                            value={fromDate}
+                            onChange={(e) => setFromDate(e.target.value)}
+                        />
+                        <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>To:</InputGroup.Text>
+                        <Form.Control
+                            type="date"
+                            value={toDate}
+                            onChange={(e) => setToDate(e.target.value)}
+                        />
+                        <Button variant="light" style={{ backgroundColor: '#f58e26' }} onClick={handleFilterClick}>Filter</Button>
+                    </InputGroup>
                 </div>
 
 
@@ -213,7 +213,7 @@ export default function CompletedLoads() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    
+
                 </div>) : (<div className='container'>
                     <h2 style={{ textAlign: "center" }}>Completed Loads</h2>
                     <br />
@@ -256,7 +256,7 @@ export default function CompletedLoads() {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    
+
                 </div>)}
 
 

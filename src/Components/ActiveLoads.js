@@ -160,8 +160,8 @@ export default function ActiveLoads() {
         ) : (
             <>
                 <br />
-                <div >
-                    <InputGroup className="mb-3" style={{ width: "20rem", margin: "auto" }}>
+                <div style={{ display: 'flex' , justifyContent:'space-between'}} >
+                    <InputGroup className="mb-3" style={{ width: "20rem", float:'left', marginLeft:'55px' }}>
                         <Form.Control
                             placeholder="Search anything..."
                             value={searchKey}
@@ -170,7 +170,7 @@ export default function ActiveLoads() {
                         />
                         <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchLoads(searchKey)} /></InputGroup.Text>
                     </InputGroup>
-                    <InputGroup className="mb-3" style={{ width: "25rem", marginLeft: '130px' }}>
+                    <InputGroup className="mb-3" style={{ width: "25rem", float:'right' , marginRight:'55px'}}>
                         {/* <InputGroup.Text style={{ backgroundColor: "#f58e26", margin: "0 0.5rem" }}>From:</InputGroup.Text> */}
                         <Form.Control
 

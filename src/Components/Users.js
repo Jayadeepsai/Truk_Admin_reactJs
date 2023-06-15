@@ -160,7 +160,7 @@ export default function Users() {
                     />
                     <InputGroup.Text style={{ backgroundColor: "#f58e26" }}><ImIcons.ImSearch onClick={() => searchUsers(searchKey)} /></InputGroup.Text>
                 </InputGroup>
-                <Button onClick={extractParsedData} variant='light' style={{color:"white",backgroundColor: "#f58e26", marginLeft:"80rem"}}>Download</Button>
+                <Button onClick={extractParsedData} variant='light' style={{color:"white",backgroundColor: "#f58e26", float:'right', marginRight:'55px'}}>Download</Button>
                 {isSearchCalled ? (
                     <div className='container'>
                         <ImIcons.ImArrowLeft2 style={{ fontSize: "1.5rem", margin: "1rem" }} onClick={() => window.location.reload()} /><span style={{ fontSize: "1.5rem" }}>Back to users</span>

@@ -122,7 +122,7 @@ export default function Home(props) {
                 <h2 style={{ textAlign: 'center', fontSize: '40px' }}>Dashboard</h2>
                 <div className='container' style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <div style={{ display: 'flex', marginBottom: '30px', }}>
-                        <Card style={{ width: '350px', height: '200px', top: '80px', borderColor: '#F58E26', }} onClick={shippersCount}>
+                        <Card style={{ width: '350px', height: '200px', top: '20px', borderColor: '#F58E26', }} onClick={shippersCount}>
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Shippers</Card.Title>
                                 <p style={{ marginLeft: '70px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{shipperCount}</b></p>
@@ -133,7 +133,7 @@ export default function Home(props) {
 
                             </Card.Body>
                         </Card>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <Card style={{ width: '350px', height: '200px',  top: '80px', borderColor: '#F58E26' }} onClick={AgentsCount}>
+                        <Card style={{ width: '350px', height: '200px',  top: '20px', borderColor: '#F58E26' }} onClick={AgentsCount}>
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Agents</Card.Title>
                                 <p style={{ marginLeft: '80px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{agentsCount}</b></p>
@@ -141,13 +141,13 @@ export default function Home(props) {
                         </Card>
                     </div>
                     <div style={{ display: 'flex', }}>
-                        <Card style={{ width: '350px', height: '200px',  top: '100px', borderColor: '#F58E26' }} onClick={transportersCount}>
+                        <Card style={{ width: '350px', height: '200px',  top: '20px', borderColor: '#F58E26' }} onClick={transportersCount}>
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Transporters</Card.Title>
                                 <p style={{ marginLeft: '53px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{transporterCount}</b></p>
                             </Card.Body>
                         </Card>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <Card style={{ width: '350px', height: '200px', top: '100px', borderColor: '#F58E26' }} onClick={fleetsCount}>
+                        <Card style={{ width: '350px', height: '200px', top: '20px', borderColor: '#F58E26' }} onClick={fleetsCount}>
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center', marginTop: '50px', marginRight: '50px' }}>Total Fleet Owners</Card.Title>
                                 <p style={{ marginLeft: '53px' }}>Count:&nbsp;&nbsp;&nbsp;<b>{fleetOwnersCount}</b></p>

@@ -119,15 +119,15 @@ export default function Management() {
 
     return (
         <>
-
+            <h2 style={{ textAlign: "center" }}>User Management</h2>
             <Button
-                style={{ backgroundColor: '#F58E26', borderRadius: '10px', margin: '30px', color: "white", marginLeft: "80rem" }}
+                style={{ backgroundColor: '#F58E26', borderRadius: '10px', marginBottom:'10px',marginRight:'55px', color: "white", float: 'right' }}
                 variant='light'
                 onClick={handleAdd}
             >
                 + Add Analyst
             </Button>
-            <h2 style={{ textAlign: "center" }}>User Management</h2>
+
             <Editprofile show={addPopUpShow} onHide={() => setAddPopUpShow(false)} />
             <div className='container'>
                 <TableContainer component={Paper}>

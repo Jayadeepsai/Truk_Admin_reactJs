@@ -70,7 +70,7 @@ const UsersPopUp = () => {
 
                         <p>
                             <strong>Pincode</strong> <span>:</span> {User.pincode}
-                        </p>
+                        </p><br/>
                     </div>
                 </div>
                 <div style={{ flexDirection: 'column', marginLeft: '30px', marginRight: '30px' }}>
