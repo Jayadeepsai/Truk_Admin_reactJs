@@ -22,18 +22,21 @@ export default function PointsPop(props) {
             <Modal.Header closeButton>
 
                 <Modal.Title id="contained-modal-title-vcenter">
-
+                    Account Details
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-               
-                {User.accDetails.map((accunt) => {
+
+
+                {User.accDetails.length > 0 ? (User.accDetails.map((accunt) => {
                     return (<>
-                        <h6>{accunt.accountNum}</h6>
-                        <p className="pa">{accunt.ifscCode}</p>
-                        <p className="pa">{accunt.accHolderName}</p>
+                        <h6><u>Account Number:</u> {accunt.accountNum}</h6>
+                        <h6><u>IFSC Code:</u> {accunt.ifscCode}</h6>
+                        <h6><u>Acc HolderName:</u> {accunt.accHolderName}</h6>
+                        <hr /><p style={{ textAlign: 'center' }}><b>OR</b></p><hr />
+                        <h6><u>UpiId:</u> {accunt.upiId}</h6>
                     </>)
-                })}
+                })) : (<h6>No Account details provided</h6>)}
 
             </Modal.Body>
 
