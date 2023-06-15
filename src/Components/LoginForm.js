@@ -131,7 +131,7 @@ const LoginForm = (props) => {
                     </div>
                 </div>
                 <div className="img" style={{ width: '50%', height: '100vh' }}>
-                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" style={{ maxWidth: '100%', maxHeight: '100vh' , height:'700px'}} />
+                    <img src="https://static1.squarespace.com/static/55d64111e4b0a862eed6a419/55d80b75e4b0c9ab9657c9c8/62186795c1b2863807ba81d8/1645808539405/unsplash-image-3jG-UM8IZ40.jpg?format=1500w" style={{ maxWidth: '100%', maxHeight: '100vh' , height:'750px'}} />
                 </div>
 
             </div>
