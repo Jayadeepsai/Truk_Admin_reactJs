@@ -59,7 +59,7 @@ export default function PointsWithdraw() {
     }, [update])
 
     const getUsers = async () => {
-        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/allUsers")
+        const users = await axios.get("https://motionless-cowboy-hat-ant.cyclic.app/admin/usersPendingWithDraw/withdrawStatus")
         try {
             if (users.data.TotalUsers !== 0) {
                 setUsers(users.data.users)
