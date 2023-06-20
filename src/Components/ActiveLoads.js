@@ -213,7 +213,7 @@ export default function ActiveLoads() {
                                             <StyledTableCell align="right">{load.LoadId}</StyledTableCell>
                                             <StyledTableCell align="right">{load.UserName}</StyledTableCell>
                                             <StyledTableCell align="right">1</StyledTableCell>
-                                            <StyledTableCell align="right">{load.isActive}</StyledTableCell>
+                                            {/* <StyledTableCell align="right">{load.isActive}</StyledTableCell> */}
                                             {/* <StyledTableCell align="right">
                                               <ActiveLoadsPopUp load={load} setLoad={setLoad} />
                                             </StyledTableCell> */}

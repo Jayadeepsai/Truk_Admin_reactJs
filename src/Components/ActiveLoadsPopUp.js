@@ -46,7 +46,7 @@ export default function ActiveLoadsPopUp(props) {
             </Modal.Body> */}
 
             <Modal.Body>
-        <div style={{ height: '15px', borderRadius: "10px", border: '1px solid black', height: '50vh', marginBottom: '10px' }}>
+        <div style={{ height: '15px', borderRadius: "10px", border: '1px solid black', height: 'auto', marginBottom: '10px' }}>
 
           <div style={{ height: '25px', border: '1px solid black', width: '120px', textAlign: 'center', marginTop: '20px', marginLeft: '30px', borderRadius: '20px', marginBottom: '10px' }}>
             <Icon icon="mdi:person" />{Load.typeOfPay}
