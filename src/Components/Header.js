@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { CgProfile } from 'react-icons/cg'
+import Swal from 'sweetalert2';
 
 import InputGroup from 'react-bootstrap/InputGroup';
 import * as ImIcons from "react-icons/im"
@@ -26,10 +27,54 @@ export default function Header() {
 
   const navigate = useNavigate()
   const handleLogout = () => {
+
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('adminEmail')
+    // alert('Are you sure to log out ?')
+
     navigate('/login');
   }
+
+  const LogOutPop = () => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+  
+    swalWithBootstrapButtons.fire({
+      title: 'Logging out',
+        text: 'Are you sure to log out ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Logout',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Logged out!',
+          'You have successfully loggedout.',
+          'success'
+        )
+        handleLogout()
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+            'Your logout is failed',
+            'error'
+        )
+      }
+    })
+  }
+
+
+  
 
   useEffect(() => {
     profile();
@@ -64,7 +109,7 @@ export default function Header() {
 
             <Nav>
               <Nav className="me-auto">
-              <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
+                <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
                 <NavDropdown title={
                   <span style={{ color: "white" }}>Loads</span>
                 } id="basic-nav-dropdown">
@@ -90,7 +135,7 @@ export default function Header() {
                 <Nav.Link href="/vehicles" style={{ color: "#ffff" }}>Vehicles</Nav.Link>
                 <Nav.Link href="/communication" style={{ color: "#ffff" }}>Communication</Nav.Link>
                 <Nav.Link href="/queries" style={{ color: "#ffff" }}>Support</Nav.Link>
-                <Button onClick={handleLogout} variant="light" style={{ backgroundColor: "#f58e26", color: "white" }}>
+                <Button onClick={LogOutPop} variant="light" style={{ backgroundColor: "#f58e26", color: "white" }}>
                   Logout
                 </Button>
 
@@ -149,7 +194,7 @@ export default function Header() {
 
             <Nav>
               <Nav className="me-auto">
-              <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
+                <Nav.Link href="/home" style={{ color: "#ffff" }}>Home</Nav.Link>
                 {/* <NavDropdown title={
                   <span style={{ color: "white" }}>Loads</span>
                 } id="basic-nav-dropdown">
@@ -167,15 +212,15 @@ export default function Header() {
                   <span style={{ color: "white" }}>Users</span>
                 } id="basic-nav-dropdown">
                   <NavDropdown.Item href="/users">TruKApp Users</NavDropdown.Item>
-                 
+
 
                 </NavDropdown>
                 {/* <Nav.Link href="/users" style={{ color: "#ffff" }}>Users</Nav.Link> */}
                 {/* <Nav.Link href="/date" style={{ color: "#ffff" }}>Date</Nav.Link> */}
                 <Nav.Link href="/vehicles" style={{ color: "#ffff" }}>Vehicles</Nav.Link>
-                
+
                 <Nav.Link href="/queries" style={{ color: "#ffff" }}>Support</Nav.Link>
-                <Button onClick={handleLogout} variant="light" style={{ backgroundColor: "#f58e26", color: "white" }}>
+                <Button onClick={LogOutPop} variant="light" style={{ backgroundColor: "#f58e26", color: "white" }}>
                   Logout
                 </Button>
 
