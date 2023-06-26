@@ -181,7 +181,7 @@ export default function Messaging() {
                                 controlId="exampleForm.ControlTextarea1"
                             >
 
-                            <select value={toValue} style={{ width: '30.5vw', height: "40px", borderRadius: '10px' }} onChange={(e) => getdata(e.target.value)} >
+                            <select value={toValue} style={{ width: '100%', height: "40px", borderRadius: '10px' }} onChange={(e) => getdata(e.target.value)} >
                                 <option selected> Send to</option>
                                 <option value="All"> All</option>
                                 <option value="Shippers">Shippers</option>
