@@ -9,7 +9,7 @@ const PrivateRoutes = (props) => {
     useEffect(() => {
         const login = localStorage.getItem('isLoggedIn')
         if (!login) {
-            navigate('/login')
+            navigate('/')
         }
     })
 

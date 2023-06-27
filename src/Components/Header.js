@@ -32,7 +32,7 @@ export default function Header() {
     localStorage.removeItem('adminEmail')
     // alert('Are you sure to log out ?')
 
-    navigate('/login');
+    navigate('/');
   }
 
   const LogOutPop = () => {

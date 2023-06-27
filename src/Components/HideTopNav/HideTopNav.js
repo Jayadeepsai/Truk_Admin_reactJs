@@ -9,7 +9,7 @@ const HideTopNav = ({children}) =>{  //you export the children prop in app.js
 
     useEffect(() => {
         console.log('this is location:', location)
-        if (location.pathname === '/login') {  //showbar is false show the loginform
+        if (location.pathname === '/') {  //showbar is false show the loginform
             setshowbar(false)  
         } else{
             setshowbar(true)  //show bar is true it navigate to mysidenav
